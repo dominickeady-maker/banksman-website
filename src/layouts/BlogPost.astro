@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, author, pubDate, updatedDate, faq, draft, imageAlt } = post.data;
+const { title, description, author, category, pubDate, updatedDate, faq, draft, imageAlt } = post.data;
 const schema = [
   blogPostingSchema(post),
   breadcrumbSchema([
@@ -28,29 +28,21 @@ const schema = [
   type="article"
   noindex={draft}
   schema={schema}
+  current="blog"
 >
-  <article class="post">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/blog/">Blog</a>
-    </nav>
-    {draft && <p class="draft-banner">Draft — not built for the live site.</p>}
-    <header class="post-header">
-      <h1>{title}</h1>
-      <p class="post-meta">
-        By {author} ·
-        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
-        {updatedDate && <> · Updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></>}
-        · {readingMinutes(post.body)} min read
-      </p>
-    </header>
-
-    <div class="prose">
-      <slot />
+  <section class="page-head"><div class="wrap">
+    <div class="crumbs"><a href="/blog/">Blog</a> / {category}</div>
+    {draft && <div class="draft-flag">Draft · not on the live site</div>}
+    <h1>{title}</h1>
+    <div class="meta">
+      {author} · <time datetime={pubDate.toISOString().slice(0, 10)}>{formatDate(pubDate)}</time>{updatedDate && <> · Updated <time datetime={updatedDate.toISOString().slice(0, 10)}>{formatDate(updatedDate)}</time></>}{` · ${readingMinutes(post.body)} min read`}
     </div>
-
+  </div></section>
+  <div class="wrap"><article class="prose">
+    <slot />
     {faq.length > 0 && (
-      <section class="faq" aria-labelledby="faq-heading">
-        <h2 id="faq-heading">FAQ</h2>
+      <section class="post-faq" aria-labelledby="faq">
+        <h2 id="faq">FAQ</h2>
         {faq.map(({ question, answer }) => (
           <details>
             <summary>{question}</summary>
@@ -59,6 +51,5 @@ const schema = [
         ))}
       </section>
     )}
-
-  </article>
+  </article></div>
 </BaseLayout>

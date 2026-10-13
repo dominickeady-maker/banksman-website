@@ -16,7 +16,7 @@ publish_mode: editorial_workflow
 
 site_url: https://banksman.app
 display_url: https://banksman.app
-logo_url: /favicon.svg
+logo_url: /assets/banksman-icon.svg
 
 media_folder: public/images/blog
 public_folder: /images/blog
@@ -40,7 +40,8 @@ collections:
       - { name: title, label: Title, widget: string, hint: 'Shown as the page H1. 10–90 characters. Do not repeat it in the body.' }
       - { name: description, label: Meta description, widget: text, hint: '50–170 characters. Shown in Google and when the link is shared.' }
       - { name: keyword, label: Target keyword, widget: string, hint: 'The search phrase this post is written for. Use it in the title or first paragraph.' }
-      - { name: author, label: Author, widget: string, default: Banksman }
+      - { name: author, label: Author, widget: string, default: Matt }
+      - { name: category, label: Category, widget: string, default: Site management, hint: 'Shown above the title and on the blog card.' }
       - { name: pubDate, label: Publish date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true }
       - { name: updatedDate, label: Updated date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, required: false }
       - { name: draft, label: Draft (hidden from the live site), widget: boolean, default: true }

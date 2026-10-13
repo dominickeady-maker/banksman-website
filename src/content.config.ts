@@ -9,6 +9,7 @@ const blog = defineCollection({
     description: z.string().min(50).max(170),
     keyword: z.string().min(3),
     author: z.string().default('Banksman'),
+    category: z.string().default('Site management'),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),

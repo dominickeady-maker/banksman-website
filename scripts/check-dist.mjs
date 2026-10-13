@@ -34,7 +34,7 @@ for (const file of files.filter(isText)) {
   const text = read(file);
   for (const word of BANNED) if (text.toLowerCase().includes(word.toLowerCase())) errors.push(`${rel(file)}: contains "${word}"`);
   if (text.includes('DEMO_URL_PENDING')) errors.push(`${rel(file)}: demo URL placeholder`);
-  if (/href="#demo"/.test(text)) errors.push(`${rel(file)}: links to #demo`);
+  if (/href="#demo"/.test(text) && !/id="demo"/.test(text)) errors.push(`${rel(file)}: links to #demo but has no #demo section`);
 }
 
 const pages = files.filter((p) => p.endsWith('.html') && !rel(p).startsWith('admin/'));
@@ -44,14 +44,16 @@ for (const file of pages) {
   const h1s = (html.match(/<h1[\s>]/g) ?? []).length;
   if (h1s !== 1) errors.push(`${name}: has ${h1s} <h1> elements, expected 1`);
   if (!/<title>[^<]{5,}<\/title>/.test(html)) errors.push(`${name}: missing <title>`);
-  if (!/<meta name="description" content="[^"]{30,}"/.test(html)) errors.push(`${name}: missing meta description`);
-  if (name !== '404.html') {
+  // Pages kept out of search (404, thanks) don't need search metadata.
+  const indexable = !/<meta name="robots" content="noindex/.test(html);
+  if (indexable && !/<meta name="description" content="[^"]{50,}"/.test(html)) errors.push(`${name}: missing or short meta description`);
+  if (indexable) {
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
     if (!canonical) errors.push(`${name}: missing canonical`);
     else if (canonical !== `${SITE}/${name.replace(/index\.html$/, '')}`) errors.push(`${name}: canonical is ${canonical}`);
   }
   const og = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
-  if (!og) errors.push(`${name}: missing og:image`);
+  if (!og) { if (indexable) errors.push(`${name}: missing og:image`); }
   else if (!resolve(og)) errors.push(`${name}: og:image ${og} is not in the build`);
 
   for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
@@ -59,10 +61,16 @@ for (const file of pages) {
   }
 
   for (const [, attr, href] of html.matchAll(/\s(href|src)="([^"]+)"/g)) {
+    if (href.startsWith('#') && href.length > 1 && !html.includes(`id="${href.slice(1)}"`)) errors.push(`${name}: ${href} points at a missing anchor`);
     if (/^(mailto:|tel:|#|data:|javascript:)/.test(href)) continue;
     if (/^https?:/.test(href) && !href.startsWith(SITE)) continue;
     if (href.startsWith('//')) continue;
-    if (resolve(href) === false) errors.push(`${name}: broken ${attr} ${href}`);
+    const target = resolve(href);
+    if (target === false) errors.push(`${name}: broken ${attr} ${href}`);
+    else if (target && href.includes('#')) {
+      const id = href.split('#')[1];
+      if (id && !read(target).includes(`id="${id}"`)) errors.push(`${name}: ${href} points at a missing #${id}`);
+    }
   }
 }
 
@@ -88,9 +96,14 @@ else {
   for (const [, link] of rss.matchAll(/<link>([^<]+)<\/link>/g)) if (!resolve(link) && link !== `${SITE}/`) errors.push(`rss.xml links ${link}, which is not in the build`);
 }
 
-for (const required of ['admin/index.html', 'admin/config.yml', 'robots.txt', 'og/default.png', '404.html']) {
+for (const required of ['admin/index.html', 'admin/config.yml', 'robots.txt', 'og/default.png', 'og/blog.png', '404.html', 'thanks.html', 'assets/site.css']) {
   if (!existsSync(join(dist, required))) errors.push(`${required} is missing`);
 }
+
+// The demo form is how people get demo logins; Netlify only picks it up if it's in the built HTML.
+const home = existsSync(join(dist, 'index.html')) ? read(join(dist, 'index.html')) : '';
+if (!/<form[^>]*name="demo-access"[^>]*data-netlify="true"/.test(home)) errors.push('index.html: demo-access Netlify form is missing');
+if (!/action="\/thanks\.html"/.test(home)) errors.push('index.html: demo form no longer posts to /thanks.html');
 
 const robots = existsSync(join(dist, 'robots.txt')) ? read(join(dist, 'robots.txt')) : '';
 if (!robots.includes(`${SITE}/sitemap-index.xml`)) errors.push('robots.txt does not point at the sitemap');

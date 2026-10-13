@@ -3,15 +3,15 @@ import { getPosts } from '../../lib/posts';
 import { renderShareImage } from '../../lib/share-image';
 
 const pages = [
-  { slug: 'default', title: 'Get your building site off WhatsApp', eyebrow: 'Site management for UK builders' },
-  { slug: 'blog', title: 'The Banksman blog', eyebrow: 'Running sites, without the chaos' },
+  { slug: 'default', title: 'Kill the paperwork. And the WhatsApp.', eyebrow: 'Site management software' },
+  { slug: 'blog', title: 'From the site, not the sales team.', eyebrow: 'The Banksman blog' },
 ];
 
 export const getStaticPaths = (async () => {
   const posts = await getPosts();
   return [
     ...pages.map(({ slug, title, eyebrow }) => ({ params: { slug }, props: { title, eyebrow } })),
-    ...posts.map((post) => ({ params: { slug: post.id }, props: { title: post.data.title, eyebrow: 'Banksman blog' } })),
+    ...posts.map((post) => ({ params: { slug: post.id }, props: { title: post.data.title, eyebrow: post.data.category } })),
   ];
 }) satisfies GetStaticPaths;
 

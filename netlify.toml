@@ -10,3 +10,9 @@
   for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# The old static site published /sitemap.xml; keep that URL working for Search Console.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301

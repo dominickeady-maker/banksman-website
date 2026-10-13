@@ -3,6 +3,7 @@ title: "Question or Statement the Reader Searched For"
 description: "One or two sentences, 50–160 characters, that answer the question and make someone want to click."
 keyword: "the search phrase this post targets"
 author: Matt
+category: Site management
 pubDate: 2026-01-31
 draft: true
 faq:
@@ -31,4 +32,4 @@ Prices always carry VAT: £79/month + VAT.
 
 ---
 
-*One-line Banksman call to action — [try the live demo](https://REPLACE-WITH-DEMO-URL), no card required.*
+*One-line Banksman call to action — [try the live demo](/#demo), no card required.*

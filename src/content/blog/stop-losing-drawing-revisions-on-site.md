@@ -3,6 +3,7 @@ title: "How to Stop Losing Drawing Revisions on Site"
 description: "Out-of-date drawings on site cause rework and disputes. Here's why it keeps happening and how to make sure everyone's working off the current version."
 keyword: "construction drawing revision control site"
 author: Matt
+category: Site management
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -37,4 +38,4 @@ Working from an outdated drawing isn't a paperwork issue — it's rework, wasted
 
 ---
 
-*Banksman puts your drawings on every phone, labelled by version and downloadable on site — [try the live demo](DEMO_URL_PENDING), no card required.*
+*Banksman puts your drawings on every phone, labelled by version and downloadable on site — [try the live demo](/#demo), no card required.*

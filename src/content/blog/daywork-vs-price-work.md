@@ -3,6 +3,7 @@ title: "Daywork vs Price Work: How to Log Hours Without an Argument"
 description: "The difference between daywork and price work, and how to record each one properly so nobody argues about hours at the end of the week."
 keyword: "daywork vs price work construction"
 author: Matt
+category: Site management
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -49,4 +50,4 @@ Almost never from the choice of daywork vs price work itself. They come from:
 
 ---
 
-*Banksman logs daywork and price work on site in seconds, reviewed and approved from the office — [try the live demo](DEMO_URL_PENDING), no card required.*
+*Banksman logs daywork and price work on site in seconds, reviewed and approved from the office — [try the live demo](/#demo), no card required.*

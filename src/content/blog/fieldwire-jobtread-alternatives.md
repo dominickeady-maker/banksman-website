@@ -3,6 +3,7 @@ title: "Fieldwire and JobTread Alternatives for Smaller Building Firms"
 description: "Fieldwire and JobTread are solid tools, but not every firm needs their scale or price. Here's what to weigh up if you're looking at alternatives."
 keyword: "fieldwire alternative small builders"
 author: Matt
+category: Choosing software
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -39,4 +40,4 @@ Banksman was built by a working builder running his own firm, specifically for t
 
 ---
 
-*See how Banksman compares for yourself — [try the live demo](DEMO_URL_PENDING), no card required.*
+*See how Banksman compares for yourself — [try the live demo](/#demo), no card required.*

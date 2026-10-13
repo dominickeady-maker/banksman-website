@@ -1,0 +1,14 @@
+/* Additions to /assets/site.css for pieces the original static site didn't have. */
+.post-faq { margin-top: 44px; }
+.post-faq details { border-top: 1px solid var(--line); padding: 16px 0; }
+.post-faq details:last-of-type { border-bottom: 1px solid var(--line); }
+.post-faq summary { cursor: pointer; color: var(--ink); font-weight: 600; font-size: 17px; }
+.post-faq summary:hover { color: var(--accent); }
+.post-faq details p { color: var(--ink-soft); margin: 10px 0 0; font-size: 16.5px; }
+.draft-flag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: #5a3a00; color: #ffd699; padding: 3px 8px; border-radius: 3px; }
+.post-card .draft-flag { align-self: flex-start; margin-top: 10px; }
+.page-head .draft-flag { margin-top: 14px; }
+.prose img { border-radius: 4px; }
+/* site.css's `.prose a` outranks `.btn-primary`, which hid the CTA button text on posts. */
+.prose a.btn { text-decoration: none; }
+.prose a.btn-primary { color: var(--accent-ink); }

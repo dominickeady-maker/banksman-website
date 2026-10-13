@@ -3,6 +3,7 @@ title: "What Is a Construction Site Diary App?"
 description: "A construction site diary app records daily site activity — tasks, hours, materials and photos — digitally instead of on paper. Here's how it works."
 keyword: "construction site diary app"
 author: Matt
+category: Site management
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -40,4 +41,4 @@ The main value isn't just "less paperwork," though that's real. It's what happen
 
 ---
 
-*Banksman is a site diary and management app built by a working builder — [try the live demo](DEMO_URL_PENDING), no card required.*
+*Banksman is a site diary and management app built by a working builder — [try the live demo](/#demo), no card required.*

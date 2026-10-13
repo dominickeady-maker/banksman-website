@@ -47,7 +47,8 @@ for (const file of posts) {
   const prose = body.replace(/```[\s\S]*?```/g, '');
   if (/^#\s/m.test(prose)) errors.push(`${rel}: body has a "# " heading; the title is already the page H1`);
   if (/^##\s+FAQ\s*$/im.test(prose)) errors.push(`${rel}: FAQ belongs in the "faq" front matter, not the body`);
-  if (prose.includes('#demo') || text.includes('DEMO_URL_PENDING')) errors.push(`${rel}: demo link is a placeholder; use the real demo URL`);
+  // A bare #demo only works on the home page; posts must link /#demo (the demo form).
+  if (/\]\(#demo\)|href="#demo"/.test(prose) || text.includes('DEMO_URL_PENDING')) errors.push(`${rel}: demo link must be /#demo, not #demo or a placeholder`);
   if (/\(fictional\)/i.test(text)) errors.push(`${rel}: say "realistic sample data", not "(fictional)"`);
   if (/revision control/i.test(prose)) errors.push(`${rel}: Banksman does not do revision control; say "drawings on every phone, labelled by version"`);
 

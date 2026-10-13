@@ -3,6 +3,7 @@ title: "Why WhatsApp Groups Are a Liability on a Construction Site"
 description: "WhatsApp is fine for a quick message, but it's a poor way to run a construction site. Here's why — and what to use instead."
 keyword: "construction site whatsapp alternative"
 author: Matt
+category: Site management
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -43,4 +44,4 @@ That's a smaller ask than it sounds. It's the difference between a chat app and 
 
 ---
 
-*Banksman keeps tasks, photos, drawings and messages per site in one app — [try the live demo](DEMO_URL_PENDING), no card required.*
+*Banksman keeps tasks, photos, drawings and messages per site in one app — [try the live demo](/#demo), no card required.*

@@ -3,6 +3,7 @@ title: "How Much Does Construction Management Software Cost in the UK?"
 description: "UK construction management software pricing ranges from free tools to enterprise platforms costing thousands a month. Here's what actually drives the cost."
 keyword: "construction management software cost UK"
 author: Matt
+category: Choosing software
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -41,4 +42,4 @@ Ask: does the price change if we add three more workers next month? If the answe
 
 ---
 
-*Banksman is £79/month + VAT flat for up to 10 users, £149/month + VAT for up to 25 — no per-seat pricing, no sales calls. [Try the live demo](DEMO_URL_PENDING), no card required.*
+*Banksman is £79/month + VAT flat for up to 10 users, £149/month + VAT for up to 25 — no per-seat pricing, no sales calls. [Try the live demo](/#demo), no card required.*

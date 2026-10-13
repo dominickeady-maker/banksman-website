@@ -3,6 +3,7 @@ title: "Construction Site Management Software for Small and Mid-Size UK Builders
 description: "Most construction management software is built for firms with an IT department. Here's what to look for if you're a small or mid-size UK builder instead."
 keyword: "construction site management software small builders UK"
 author: Matt
+category: Choosing software
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -45,4 +46,4 @@ If you're running somewhere between 2 and 25 people across a handful of sites, t
 
 ---
 
-*Banksman is site management software built by a working builder for firms this size — £79/month + VAT, no sales call. [Try the live demo](DEMO_URL_PENDING), no card required.*
+*Banksman is site management software built by a working builder for firms this size — £79/month + VAT, no sales call. [Try the live demo](/#demo), no card required.*

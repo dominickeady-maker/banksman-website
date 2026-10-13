@@ -3,6 +3,7 @@ title: "Banksman vs Fieldwire: Which Is Right for a 10-Person Building Firm?"
 description: "A straight comparison of Banksman and Fieldwire for a small-to-mid-size UK building firm, covering pricing, setup and what each is actually built for."
 keyword: "banksman vs fieldwire"
 author: Matt
+category: Choosing software
 pubDate: 2026-10-13
 draft: true
 faq:
@@ -40,4 +41,4 @@ If your firm is managing complex, plan-heavy projects and needs deep markup and 
 
 ---
 
-*See the difference for yourself — [try Banksman's live demo](DEMO_URL_PENDING), no card required.*
+*See the difference for yourself — [try Banksman's live demo](/#demo), no card required.*
