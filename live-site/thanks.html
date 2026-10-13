@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your demo access — Banksman</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-90 -90 866 860'><rect x='-90' y='-90' width='866' height='860' rx='150' fill='%230d1120'/><g fill='%23ff7a2e'><polygon points='9.5,167.5 101.5,8.2 285.5,8.2 377.5,167.5 285.5,326.8 101.5,326.8'/><polygon points='308.0,339.5 400.0,180.2 584.0,180.2 676.0,339.5 584.0,498.8 400.0,498.8'/><polygon points='9.5,512.5 101.5,353.2 285.5,353.2 377.5,512.5 285.5,671.8 101.5,671.8'/></g></svg>">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0d1120; --surface:#171c30; --surface-2:#1f2740;
+    --ink:#f5f3ec; --ink-soft:#c3c9de; --muted:#8890a8;
+    --accent:#ff7a2e; --accent-ink:#180d04; --accent-soft:#3d2410;
+    --line:rgba(245,243,236,0.10); --line-strong:rgba(245,243,236,0.22);
+    --shadow:0 1px 2px rgba(0,0,0,0.4), 0 16px 44px rgba(0,0,0,0.5);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:40px 18px 56px; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif; line-height:1.55;
+    background-image:radial-gradient(700px 500px at 82% -10%, rgba(255,122,46,.22), rgba(255,122,46,0) 70%);
+  }
+  .wrap{max-width:820px;margin:0 auto;}
+  h1{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-size:clamp(34px,8vw,56px);font-weight:800;margin:0 0 12px;line-height:1.02;}
+  h1 span{color:var(--accent);}
+  .lede{color:var(--ink-soft);font-size:17px;margin:0 0 6px;max-width:56ch;}
+  .note{color:var(--muted);font-size:14.5px;margin:0 0 30px;max-width:56ch;}
+
+  .pass-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:700px){ .pass-grid{grid-template-columns:1fr;} }
+  .pass{background:var(--surface);border:1px solid var(--line-strong);border-radius:6px;box-shadow:var(--shadow);overflow:hidden;}
+  .pass-top{background:var(--accent);color:var(--accent-ink);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;}
+  .pass-top span{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  .pass-body{padding:18px;}
+  .pass-role{font-size:22px;font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:700;}
+  .pass-who{font-size:13.5px;color:var(--muted);margin-top:2px;}
+  .pass-cred{margin-top:12px;background:var(--surface-2);border:1px dashed var(--line-strong);border-radius:3px;padding:12px 14px;}
+  .pass-cred div{font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:3px 0;word-break:break-all;}
+  .pass-cred .k{color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;
+       padding:13px 20px;border-radius:3px;text-decoration:none;font-weight:600;font-size:15px;
+       background:var(--accent);color:var(--accent-ink);border:1px solid transparent;}
+  .btn:hover{background:#ef6d21;}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong);width:auto;padding:12px 20px;}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  .panel{border:1px solid var(--accent);background:var(--accent-soft);border-radius:4px;padding:24px 20px;margin-top:32px;text-align:center;}
+  .panel a.big{display:block;color:var(--accent);text-decoration:none;font-family:'Big Shoulders Display','Arial Narrow',sans-serif;
+                font-weight:800;font-size:clamp(26px,6vw,38px);line-height:1.15;word-break:break-word;}
+  .panel a.big + a.big{margin-top:4px;}
+  .panel p{margin:14px 0 0;font-size:15px;font-weight:600;}
+  .tips{margin-top:32px;border-top:1px solid var(--line);padding-top:24px;}
+  .tips h2{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-size:26px;margin:0 0 12px;}
+  .tips ul{margin:0;padding-left:20px;color:var(--ink-soft);font-size:15px;}
+  .tips li{margin-bottom:8px;}
+  .back{margin-top:30px;}
+  .autolaunch{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+    border:1px solid var(--accent); background:var(--accent-soft);
+    border-radius:4px; padding:14px 16px; margin:0 0 26px;
+    font-size:15px; font-weight:600;
+  }
+  .autolaunch b{font-family:'IBM Plex Mono',monospace; color:var(--accent);}
+  .autolaunch button{
+    margin-left:auto; padding:8px 14px; border-radius:3px; cursor:pointer;
+    background:transparent; color:var(--ink); border:1px solid var(--line-strong);
+    font:inherit; font-size:14px;
+  }
+  .autolaunch button:hover{border-color:var(--accent); color:var(--accent);}
+</style>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="icon" href="/assets/banksman-icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <div class="wrap">
+    <h1>YOU'RE IN.<br><span>HAVE A PROPER LOOK.</span></h1>
+    <p class="lede">Your details have come through to me — I'll follow up, but don't wait for that. Here are your logins. They work right now, on your phone or a laptop.</p>
+    <p class="note">Bookmark this page if you want to come back to it.</p>
+
+    <div class="pass-grid">
+      <div class="pass">
+        <div class="pass-top"><span>Site Access Pass</span><span>M</span></div>
+        <div class="pass-body">
+          <div class="pass-role">Manager</div>
+          <div class="pass-who">Runs the sites — approve timesheets, assign tasks, action materials</div>
+          <div class="pass-cred">
+            <div class="k">Email</div><div>manager@banksman.app</div>
+            <div class="k">Password</div><div>demo123</div>
+          </div>
+          <a class="btn" href="https://app.banksman.app/?demo=manager" target="_blank" rel="noopener">Launch as manager →</a>
+        </div>
+      </div>
+      <div class="pass">
+        <div class="pass-top"><span>Site Access Pass</span><span>W</span></div>
+        <div class="pass-body">
+          <div class="pass-role">Worker</div>
+          <div class="pass-who">Runs the job — log hours, request materials, upload site photos</div>
+          <div class="pass-cred">
+            <div class="k">Email</div><div>worker@banksman.app</div>
+            <div class="k">Password</div><div>demo123</div>
+          </div>
+          <a class="btn" href="https://app.banksman.app/?demo=worker" target="_blank" rel="noopener">Launch as worker →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips">
+      <h2>Worth trying while you're in there</h2>
+      <ul>
+        <li>Log a timesheet as the worker, then approve it as the manager — that's the loop that usually causes the arguments.</li>
+        <li>Raise a materials request from the worker side and action it from the office side.</li>
+        <li>Open a task, upload a photo against it, mark it done.</li>
+        <li>Export any table to CSV — that's what goes to payroll or the accountant.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <a class="big" href="tel:+447508300353">07508 300353</a>
+      <a class="big" href="mailto:dom@dm4u.ai">dom@dm4u.ai</a>
+      <p>Stuck, or want it set up for your own sites? Ring or email me direct — you'll get me, not a call centre.</p>
+    </div>
+
+    <p style="text-align:center;font-size:13px;color:#8890a8;margin-top:28px">How we use your details: <a href="/privacy/" style="color:#8890a8">privacy &amp; cookies</a>.</p>
+    <div class="back"><a class="btn btn-ghost" href="/">Back to the site</a></div>
+  </div>
+
+</body>
+</html>
