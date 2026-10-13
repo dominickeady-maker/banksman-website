@@ -1,10 +1,18 @@
 ---
 title: "Construction Site Management Software for Small and Mid-Size UK Builders"
-meta_description: "Most construction management software is built for firms with an IT department. Here's what to look for if you're a small or mid-size UK builder instead."
-target_keyword: "construction site management software small builders UK"
+description: "Most construction management software is built for firms with an IT department. Here's what to look for if you're a small or mid-size UK builder instead."
+keyword: "construction site management software small builders UK"
+author: Matt
+pubDate: 2026-10-13
+draft: true
+faq:
+  - question: "Is cheaper software worse software?"
+    answer: "Not necessarily. A lot of the cost in enterprise construction software goes toward capability that smaller firms never use — multi-trade bid management, complex approval chains, integrations with systems you don't have. Simpler, cheaper tools can cover the day-to-day better precisely because they're not trying to do everything."
+  - question: "How many users justify moving off WhatsApp and spreadsheets?"
+    answer: "There's no fixed number, but once you're running more than one site at a time, or you've had even one dispute you couldn't produce evidence for, the cost of a proper system is usually already smaller than the cost of the next argument."
+  - question: "Do I need to migrate old data to switch?"
+    answer: "Usually not much is worth migrating — most firms start clean going forward rather than trying to backfill old WhatsApp threads and paper timesheets."
 ---
-
-# Construction Site Management Software for Small and Mid-Size UK Builders
 
 The best construction site management software for a small or mid-size UK building firm is one priced simply, set up without a sales process, and focused on the handful of things that actually cause daily problems — tasks, timesheets, materials, drawings and photos — rather than a full enterprise suite built for firms with dedicated IT and procurement teams.
 
@@ -35,17 +43,6 @@ If you're running somewhere between 2 and 25 people across a handful of sites, t
 - **Does it export your data cleanly?** Timesheets and materials records need to get to payroll, your accountant, or head office without manual re-entry.
 - **Was it built by someone who's actually run a site?** Not a guarantee of quality, but software designed by people who've never set foot on a job tends to solve the problems they imagine rather than the ones that actually happen.
 
-## FAQ
-
-**Is cheaper software worse software?**
-Not necessarily. A lot of the cost in enterprise construction software goes toward capability that smaller firms never use — multi-trade bid management, complex approval chains, integrations with systems you don't have. Simpler, cheaper tools can cover the day-to-day better precisely because they're not trying to do everything.
-
-**How many users justify moving off WhatsApp and spreadsheets?**
-There's no fixed number, but once you're running more than one site at a time, or you've had even one dispute you couldn't produce evidence for, the cost of a proper system is usually already smaller than the cost of the next argument.
-
-**Do I need to migrate old data to switch?**
-Usually not much is worth migrating — most firms start clean going forward rather than trying to backfill old WhatsApp threads and paper timesheets.
-
 ---
 
-*Banksman is site management software built by a working builder for firms this size — £79/month, no sales call. [Try the live demo](#demo), no card required.*
+*Banksman is site management software built by a working builder for firms this size — £79/month + VAT, no sales call. [Try the live demo](DEMO_URL_PENDING), no card required.*

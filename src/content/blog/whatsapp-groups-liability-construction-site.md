@@ -1,10 +1,18 @@
 ---
 title: "Why WhatsApp Groups Are a Liability on a Construction Site"
-meta_description: "WhatsApp is fine for a quick message, but it's a poor way to run a construction site. Here's why — and what to use instead."
-target_keyword: "construction site whatsapp alternative"
+description: "WhatsApp is fine for a quick message, but it's a poor way to run a construction site. Here's why — and what to use instead."
+keyword: "construction site whatsapp alternative"
+author: Matt
+pubDate: 2026-10-13
+draft: true
+faq:
+  - question: "Is WhatsApp actually bad, or just not ideal?"
+    answer: "It's fine for casual, low-stakes chat. It becomes a liability specifically around anything you'd need to prove or find later — task completion, photo evidence, drawing versions."
+  - question: "What should replace it?"
+    answer: "A site management tool with messaging built in per job or per site — so you get the speed of a chat app without losing task tracking, photo evidence, and document control."
+  - question: "Can I keep using WhatsApp for quick chat and something else for records?"
+    answer: "You can, but in practice teams that run two systems tend to only maintain one properly — usually whichever is easier, which ends up being WhatsApp again. A single tool that does both tends to stick better."
 ---
-
-# Why WhatsApp Groups Are a Liability on a Construction Site
 
 WhatsApp groups are a liability on site because messages, photos and instructions get buried within days, nobody owns the thread, and there's no record you can point to if a job or a dispute is ever questioned. It works for a quick "running 20 minutes late" — it doesn't work as a system of record for a live building project.
 
@@ -33,17 +41,6 @@ Not a big enterprise system with a six-week rollout — just a place where:
 
 That's a smaller ask than it sounds. It's the difference between a chat app and a system that happens to include messaging.
 
-## FAQ
-
-**Is WhatsApp actually bad, or just not ideal?**
-It's fine for casual, low-stakes chat. It becomes a liability specifically around anything you'd need to prove or find later — task completion, photo evidence, drawing versions.
-
-**What should replace it?**
-A site management tool with messaging built in per job or per site — so you get the speed of a chat app without losing task tracking, photo evidence, and document control.
-
-**Can I keep using WhatsApp for quick chat and something else for records?**
-You can, but in practice teams that run two systems tend to only maintain one properly — usually whichever is easier, which ends up being WhatsApp again. A single tool that does both tends to stick better.
-
 ---
 
-*Banksman keeps tasks, photos, drawings and messages per site in one app — [try the live demo](#demo), no card required.*
+*Banksman keeps tasks, photos, drawings and messages per site in one app — [try the live demo](DEMO_URL_PENDING), no card required.*

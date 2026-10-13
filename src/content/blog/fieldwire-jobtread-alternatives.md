@@ -1,10 +1,18 @@
 ---
 title: "Fieldwire and JobTread Alternatives for Smaller Building Firms"
-meta_description: "Fieldwire and JobTread are solid tools, but not every firm needs their scale or price. Here's what to weigh up if you're looking at alternatives."
-target_keyword: "fieldwire alternative small builders"
+description: "Fieldwire and JobTread are solid tools, but not every firm needs their scale or price. Here's what to weigh up if you're looking at alternatives."
+keyword: "fieldwire alternative small builders"
+author: Matt
+pubDate: 2026-10-13
+draft: true
+faq:
+  - question: "Is Banksman trying to be a Fieldwire replacement for large firms?"
+    answer: "No — it's built for smaller and mid-size firms who found platforms like Fieldwire more than they needed, not as a head-to-head enterprise competitor."
+  - question: "Will switching from Fieldwire or JobTread mean losing historical data?"
+    answer: "Most firms making this kind of switch start fresh going forward rather than migrating years of project history, since the value going forward comes from what's tracked from here on, not what's imported."
+  - question: "Is a simpler tool a downgrade?"
+    answer: "Only if you were actually using the extra capability. If the bid pipelines, complex cost tracking, or enterprise reporting weren't being used day-to-day, a focused tool covering the core site tasks isn't a downgrade — it's a better match."
 ---
-
-# Fieldwire and JobTread Alternatives for Smaller Building Firms
 
 The main reason smaller building firms look for a Fieldwire or JobTread alternative is fit, not quality — both are capable platforms, but they're generally built and priced with larger firms or bigger project pipelines in mind. Firms running a handful of sites with a small team often want the same core capability (tasks, timesheets, photos, drawings) without the scale, per-seat pricing, or sales-led setup that comes with them.
 
@@ -27,19 +35,8 @@ Fieldwire is strong on plan markup and field coordination across larger, more co
 
 ## Where Banksman fits
 
-Banksman was built by a working builder running his own firm, specifically for the small-to-mid-size gap Fieldwire and JobTread aren't really aimed at. Flat £79–£149/month pricing, no sales call, and a live demo with real (fictional) site data you can log into right now — manager or worker login, no card required.
-
-## FAQ
-
-**Is Banksman trying to be a Fieldwire replacement for large firms?**
-No — it's built for smaller and mid-size firms who found platforms like Fieldwire more than they needed, not as a head-to-head enterprise competitor.
-
-**Will switching from Fieldwire or JobTread mean losing historical data?**
-Most firms making this kind of switch start fresh going forward rather than migrating years of project history, since the value going forward comes from what's tracked from here on, not what's imported.
-
-**Is a simpler tool a downgrade?**
-Only if you were actually using the extra capability. If the bid pipelines, complex cost tracking, or enterprise reporting weren't being used day-to-day, a focused tool covering the core site tasks isn't a downgrade — it's a better match.
+Banksman was built by a working builder running his own firm, specifically for the small-to-mid-size gap Fieldwire and JobTread aren't really aimed at. Flat £79–£149/month + VAT pricing, no sales call, and a live demo with realistic sample data you can log into right now — manager or worker login, no card required.
 
 ---
 
-*See how Banksman compares for yourself — [try the live demo](#demo), no card required.*
+*See how Banksman compares for yourself — [try the live demo](DEMO_URL_PENDING), no card required.*

@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../site';
+import { getPosts, postUrl, formatDate } from '../../lib/posts';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const posts = await getPosts();
+const description = 'Practical writing for UK builders on running sites: tasks, timesheets, materials, drawings and getting off WhatsApp.';
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `${SITE.name} blog`,
+    url: `${SITE.url}/blog/`,
+    description,
+    blogPost: posts.filter((p) => !p.data.draft).map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      url: new URL(postUrl(p), SITE.url).href,
+      datePublished: p.data.pubDate.toISOString(),
+    })),
+  },
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog/' }]),
+];
+---
+<BaseLayout title={`Blog | ${SITE.name}`} description={description} image="/og/blog.png" schema={schema}>
+  <section class="blog-index">
+    <h1>The Banksman blog</h1>
+    <p class="lede">{description}</p>
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a href={postUrl(post)}>
+            <h2>{post.data.title}{post.data.draft && <span class="draft-tag">Draft</span>}</h2>
+            <p>{post.data.description}</p>
+            <p class="post-meta">{post.data.author} · <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time></p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

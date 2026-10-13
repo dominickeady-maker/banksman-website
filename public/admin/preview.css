@@ -1,0 +1,5 @@
+/* Approximates the live post styles inside the Decap preview pane. */
+body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; color: #1a1f24; line-height: 1.65; max-width: 720px; margin: 0 auto; padding: 24px; }
+h1, h2, h3 { line-height: 1.25; }
+a { color: #c2410c; }
+img { max-width: 100%; height: auto; }

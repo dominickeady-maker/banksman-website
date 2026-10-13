@@ -1,0 +1,40 @@
+---
+import { SITE } from '../site';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  schema?: Record<string, unknown>[];
+}
+
+const { title, description, image = '/og/default.png', imageAlt, type = 'website', noindex = false, schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const imageUrl = new URL(image, SITE.url).href;
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex ? <meta name="robots" content="noindex, nofollow" /> : <link rel="canonical" href={canonical} />}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+{imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<link rel="alternate" type="application/rss+xml" title={`${SITE.name} blog`} href={new URL('/rss.xml', SITE.url).href} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+{schema.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}
