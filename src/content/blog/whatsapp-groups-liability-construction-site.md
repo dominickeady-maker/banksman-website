@@ -37,7 +37,7 @@ Not a big enterprise system with a six-week rollout — just a place where:
 
 - Every task is assigned to someone, and marked done with a photo attached
 - Photos and updates are tied to the specific job, not floating in a chat
-- The current drawing revision is the only one anyone can find
+- Drawings are on every phone, labelled by version, not in a PDF buried in the chat
 - Messaging still happens, but per site, in one thread — not scattered across five group chats
 
 That's a smaller ask than it sounds. It's the difference between a chat app and a system that happens to include messaging.

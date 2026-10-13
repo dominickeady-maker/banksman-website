@@ -10,7 +10,7 @@ faq:
   - question: "Can I try both before deciding?"
     answer: "Yes — Banksman's live demo needs no card and takes minutes to access; Fieldwire also offers a way to trial its platform. Trying both on your own data (or close to it) is the fastest way to know which fits."
   - question: "Does Banksman do plan markup like Fieldwire?"
-    answer: "Banksman focuses on putting drawings on every phone, labelled by version, rather than detailed markup tools — it's built for firms who need the latest drawing on site, not annotation-heavy coordination."
+    answer: "Banksman focuses on putting drawings on every phone, labelled by version, rather than detailed markup tools — it's built for firms who need their drawings on site, not annotation-heavy coordination."
   - question: "Is Fieldwire overkill for a small firm?"
     answer: "Not necessarily overkill, but likely more capability — and cost — than a small firm running straightforward jobs will use day-to-day."
 ---

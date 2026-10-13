@@ -34,7 +34,7 @@ If you're running somewhere between 2 and 25 people across a handful of sites, t
 - **Tasks with photo proof** — so you know something's done without ringing round
 - **Timesheets** — daywork and price work, logged on site, approved from the office
 - **Materials requests** — raised on site, approved remotely, tracked to delivery
-- **Current drawings** — accessible on every phone, not printed or three revisions out of date
+- **Drawings on every phone** — labelled by version, not printed or lost in an email chain
 - **Messaging per site** — one thread per job, not a WhatsApp group everyone eventually mutes
 
 ## What to check before picking anything

@@ -36,7 +36,7 @@ Start from [`BLOG_TEMPLATE.md`](BLOG_TEMPLATE.md), or click **New Blog post** in
 2. **Every price says "+ VAT"**, straight after the figure: `£79/month + VAT`, `£10–£30 per user + VAT`.
 3. **Link the demo as `/#demo`**, never a bare `#demo`, which only works on the home page. `/#demo` is the four-field form that unlocks the logins. It's set in `src/site.ts`.
 4. **Describe the demo as "realistic sample data"**, not "real (fictional) data".
-5. **Drawings:** Banksman puts drawings on every phone, labelled by version. It does not do revision control, superseding or comparison, so don't claim it does.
+5. **Drawings:** Banksman puts drawings on every phone, labelled by version. It does not do revision control, superseding or comparison, so don't claim it does, or imply it ("the current revision on every phone", "there is only one"). This applies to the site pages too.
 6. **Claims about other products**, such as prices, tiers, free plans and how onboarding works, change often. Check each one on the vendor's own site the week you publish, and keep wording general ("per-user pricing") rather than quoting their figures.
 7. **Compliance and legal points:** say what's generally true and tell the reader to check their own contract, client or insurer. Don't promise that something is "valid" or "compliant".
 8. Internal links use the path with a trailing slash: `[daywork vs price work](/blog/daywork-vs-price-work/)`.
@@ -72,7 +72,7 @@ Commit to a branch, open a pull request, and check the Netlify preview before me
    - no H1 or `## FAQ` in the body;
    - every price has "+ VAT";
    - no bare `#demo` link;
-   - no "(fictional)" and no "revision control";
+   - no "(fictional)", and no revision-control claims in posts or pages;
    - internal blog links point at real posts;
    - the old company name appears nowhere in the repo.
 

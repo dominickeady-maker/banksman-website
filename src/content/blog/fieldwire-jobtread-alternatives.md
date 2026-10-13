@@ -31,7 +31,7 @@ Fieldwire is strong on plan markup and field coordination across larger, more co
 
 1. **Try before you commit.** A live demo you can log into yourself beats a sales call every time.
 2. **Flat, published pricing.** If the number isn't on the page, assume it's negotiable — which usually isn't in your favour.
-3. **Coverage of the actual daily pain points**, not the full enterprise feature set: tasks and photo proof, timesheets (including daywork vs price work), materials requests, current drawings, and messaging per site.
+3. **Coverage of the actual daily pain points**, not the full enterprise feature set: tasks and photo proof, timesheets (including daywork vs price work), materials requests, drawings on every phone, and messaging per site.
 4. **Built for firms your size**, ideally by people who've actually run sites like yours — not scaled down from an enterprise product.
 
 ## Where Banksman fits

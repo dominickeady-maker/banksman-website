@@ -11,6 +11,10 @@ const warnings = [];
 // Slugs used by other routes under /og/.
 const RESERVED = new Set(['default', 'blog']);
 
+// Banksman labels drawings by version; it has no revision history or superseding, so pages
+// and posts must not claim it does. The keyword field may still target the search phrase.
+const DRAWING_CLAIM = /revision control|version control|(?:latest|current) (?:drawing )?revision (?:is )?on every phone|(?:latest|current) drawing on every phone|latest revision on every phone|because there is only one|only one anyone can find/i;
+
 // A price is £ + digits, optionally a range and a unit; it must be followed by "+ VAT".
 const PRICE = /£\d[\d,.]*k?(?:\s?[–-]\s?£\d[\d,.]*k?)?(?:\/\w+|\s(?:a|per)\s(?:month|year|user|seat|week|day))?/g;
 
@@ -50,7 +54,8 @@ for (const file of posts) {
   // A bare #demo only works on the home page; posts must link /#demo (the demo form).
   if (/\]\(#demo\)|href="#demo"/.test(prose) || text.includes('DEMO_URL_PENDING')) errors.push(`${rel}: demo link must be /#demo, not #demo or a placeholder`);
   if (/\(fictional\)/i.test(text)) errors.push(`${rel}: say "realistic sample data", not "(fictional)"`);
-  if (/revision control/i.test(prose)) errors.push(`${rel}: Banksman does not do revision control; say "drawings on every phone, labelled by version"`);
+  const claim = prose.match(DRAWING_CLAIM) ?? fm.match(/^(?:title|description):.*?(revision control|version control)/im);
+  if (claim) errors.push(`${rel}: "${claim[0].trim()}" claims revision control; say "drawings on every phone, labelled by version"`);
 
   for (const line of text.split('\n')) {
     for (const match of line.matchAll(PRICE)) {
@@ -74,6 +79,12 @@ for (const file of walk(root, skip).filter(isText)) {
   for (const word of BANNED) {
     if (text.toLowerCase().includes(word.toLowerCase())) errors.push(`${relative(root, file)}: contains "${word}"`);
   }
+}
+
+// The same drawing rule for site pages.
+for (const file of walk(join(root, 'src/pages')).filter((p) => p.endsWith('.astro'))) {
+  const claim = readFileSync(file, 'utf8').match(DRAWING_CLAIM);
+  if (claim) errors.push(`${relative(root, file)}: "${claim[0]}" claims revision control; say "drawings on every phone, labelled by version"`);
 }
 
 if (!existsSync(join(root, 'public/admin/config.yml'))) errors.push('public/admin/config.yml is missing');

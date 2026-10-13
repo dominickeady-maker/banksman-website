@@ -33,7 +33,7 @@ None of these are wrong exactly — they're just slow to search, easy to lose, a
 - **Photos** — tied to the specific task or job, not just floating in a chat, so there's proof of work at a point in time
 - **Hours** — daywork and price work logged on site rather than reconstructed later
 - **Materials** — what was requested, approved, and delivered
-- **Drawings** — the current revision, accessible from site rather than printed or emailed around
+- **Drawings** — on every phone, labelled by version, rather than printed or emailed around
 
 ## Why it matters beyond convenience
 

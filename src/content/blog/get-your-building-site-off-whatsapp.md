@@ -32,7 +32,7 @@ You don’t need to move everything. Keep WhatsApp for the chat. Move the five t
 2. **Photo proof.** Photos tied to the task and the site, with a date on them.
 3. **Hours.** Daywork and price work logged on the day, not remembered on Friday.
 4. **Materials.** Requested by the lad who needs them, approved by the person who pays.
-5. **Drawings.** One current revision that everyone sees on their phone.
+5. **Drawings.** On every phone, labelled by version, so nobody’s squinting at an old print.
 
 Get those five out of the group chat and most of the arguments go with them.
 
@@ -56,7 +56,7 @@ This is the part most software companies get wrong. They build something for the
 - Friday hours are already in, and they were logged on the day by the person who did them.
 - Every task has a dated photo against it, ready if there’s ever a dispute.
 - Material requests come to you to approve, instead of turning up on an invoice you didn’t expect.
-- Everyone’s on the same drawing revision, because there is only one.
+- Drawings are on every phone, labelled by version, instead of pinned up in the cabin or buried in the chat.
 
 ## Why I built Banksman
 
