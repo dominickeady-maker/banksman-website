@@ -4,8 +4,8 @@ description: "WhatsApp is fine for a quick message, but it's a poor way to run a
 keyword: "construction site whatsapp alternative"
 author: Matt
 category: Site management
-pubDate: 2026-10-13
-draft: true
+pubDate: 2026-10-14
+draft: false
 faq:
   - question: "Is WhatsApp actually bad, or just not ideal?"
     answer: "It's fine for casual, low-stakes chat. It becomes a liability specifically around anything you'd need to prove or find later — task completion, photo evidence, drawing versions."
