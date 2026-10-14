@@ -19,11 +19,11 @@ The best construction site management software for a small or mid-size UK buildi
 
 ## Why most options don't fit
 
-Search "construction management software" and most of what comes up — Fieldwire, JobTread, ConstructionOnline, Contractor Foreman and similar — is genuinely capable software. The problem for a smaller firm isn't capability, it's fit:
+Search "construction management software" and much of what comes up is genuinely capable software, often designed with larger contractors in mind. The problem for a smaller firm usually isn't capability, it's fit:
 
-- **Sales-led onboarding.** Book a demo, talk to sales, get a quote — when what you wanted was to just try it this afternoon.
-- **Pricing built for scale.** Per-seat pricing or enterprise tiers that make sense at 100 users start to feel expensive fast at 8–15.
-- **More than you need.** Estimating, bid management, CRM, scheduling across dozens of trades — useful for a large contractor, overkill for a firm running three or four sites.
+- **Sales-led onboarding.** Many larger platforms steer you towards a demo or a sales call before you're properly up and running — when what you wanted was to just try it this afternoon.
+- **Pricing built for scale.** Per-user pricing and enterprise tiers are common. They can make sense for a large team, but the cost adds up quickly for a firm of 8–15.
+- **More than you need.** Many larger platforms bundle estimating, bid management, CRM or multi-trade scheduling — useful for a large contractor, more than a firm running three or four sites will use.
 
 None of that makes the bigger platforms bad. It just means they're solving a different problem than "get my site off WhatsApp and a biro."
 
