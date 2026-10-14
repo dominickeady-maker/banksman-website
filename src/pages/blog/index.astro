@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../site';
+import { getPosts, postUrl, formatDate, readingMinutes } from '../../lib/posts';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const posts = await getPosts();
+const description = 'Practical articles for UK builders and contractors on running sites, managing crews, timesheets, materials and site paperwork.';
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `${SITE.name} blog`,
+    url: `${SITE.url}/blog/`,
+    description,
+    blogPost: posts.filter((p) => !p.data.draft).map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      url: new URL(postUrl(p), SITE.url).href,
+      datePublished: p.data.pubDate.toISOString().slice(0, 10),
+    })),
+  },
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog/' }]),
+];
+---
+<BaseLayout title="Blog — site management tips for UK builders | Banksman" description={description} image="/og/blog.png" schema={schema} current="blog">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The Banksman blog</div>
+    <h1>From the site, not the sales team.</h1>
+    <p>Straight-talking guides on running building sites, crews, timesheets and paperwork — written by a builder who's been there.</p>
+  </div></section>
+  <div class="wrap"><div class="post-grid">
+    {posts.map((post) => (
+      <a class="post-card" href={postUrl(post)}>
+        <span class="tag">{post.data.category}</span>
+        {post.data.draft && <span class="draft-flag">Draft</span>}
+        <h2>{post.data.title}</h2>
+        <p>{post.data.description}</p>
+        <span class="meta">{formatDate(post.data.pubDate)} · {readingMinutes(post.body)} min read</span>
+      </a>
+    ))}
+  </div></div>
+</BaseLayout>

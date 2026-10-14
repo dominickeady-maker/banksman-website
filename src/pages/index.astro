@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Ported from the static banksman.app home page (live-site/index.html).
+const schema = [{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Banksman", "url": "https://banksman.app", "logo": "https://banksman.app/assets/icon-512.png", "email": "dom@dm4u.ai", "telephone": "+447508300353", "parentOrganization": {"@type": "Organization", "name": "DM.AI 4U Ltd"}}, {"@type": "SoftwareApplication", "name": "Banksman", "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android", "url": "https://banksman.app", "description": "Construction site management app for UK builders: tasks, timesheets, materials, drawings, site photos and messages.", "offers": [{"@type": "Offer", "name": "Starter", "price": "79", "priceCurrency": "GBP"}, {"@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "GBP"}]}, {"@type": "WebSite", "name": "Banksman", "url": "https://banksman.app/"}]}];
+---
+<BaseLayout
+  title={"Banksman — Construction site management software"}
+  description={"Banksman is construction site management software built by a working builder. Tasks, drawings, timesheets, materials and site photos in one app your team will actually use. Try the live demo — no sign-up, no card."}
+  schema={schema}
+>
+<!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Site management software</div>
+        <h1>KILL THE PAPERWORK.<br><span>AND THE WHATSAPP.</span></h1>
+        <p class="lede">Banksman keeps tasks, drawings, timesheets, materials and site photos in one app your whole team will actually use — built by a working builder, not a software company that's never set foot on site.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#demo">Try the live demo →</a>
+          <a class="btn btn-ghost" href="#pricing">See pricing</a>
+        </div>
+        <ul class="reassure">
+          <li>Four fields and you're straight into the real app — no card, ever</li>
+          <li>The working app on real site data, not a video tour</li>
+          <li>Ring the number above and you get me, not a call centre</li>
+        </ul>
+      </div>
+
+      <!-- Stylised mock of the app. Swap for real screenshots when you have them. -->
+      <div class="mock">
+        <div class="mock-desk" aria-hidden="true">
+          <div class="mock-desk-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="mock-desk-body">
+            <div class="stat-row">
+              <div class="stat"><b>3</b><span>Sites</span></div>
+              <div class="stat"><b>6</b><span>Crew</span></div>
+              <div class="stat"><b>8</b><span>Drawings</span></div>
+            </div>
+            <div class="bar a fill"></div><div class="bar b"></div><div class="bar c fill"></div><div class="bar b"></div>
+          </div>
+        </div>
+        <div class="phone" role="img" aria-label="Banksman on a phone: today's tasks for Plot 4, Marsden Road, one marked complete with a site photo attached">
+          <div class="phone-top">
+            <div class="mono">Plot 4 — Marsden Road</div>
+            <h4>Today's tasks</h4>
+          </div>
+          <div class="phone-body">
+            <div class="task done">
+              <div class="t">Strip foundations — east run</div>
+              <div class="m">Marked done 08:42 · photo attached</div>
+              <div class="thumb"></div>
+            </div>
+            <div class="task">
+              <div class="t">Set out blockwork to DPC</div>
+              <div class="m">Assigned · Danny H</div>
+            </div>
+            <div class="task">
+              <div class="t">Materials: 40 × dense blocks</div>
+              <div class="m">Requested 07:15 · awaiting approval</div>
+            </div>
+          </div>
+          <div class="phone-nav"><span class="on">Tasks</span><span>Hours</span><span>Photos</span><span>Plans</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON ================= -->
+  <section id="why">
+    <div class="wrap">
+      <div class="eyebrow">Why bother</div>
+      <h2 class="big">Your site runs on paper and group chats.</h2>
+      <div class="compare">
+        <div class="compare-head">
+          <div class="old">The old way</div>
+          <div class="new">With Banksman</div>
+        </div>
+        <div class="compare-row">
+          <div class="old">Lost paper plans and drawings three revisions out of date</div>
+          <div class="new">Drawings on every phone, labelled by version and downloadable on site</div>
+        </div>
+        <div class="compare-row">
+          <div class="old">Job updates and photos buried in a group chat</div>
+          <div class="new">Tasks tracked per site, with photo proof against the job</div>
+        </div>
+        <div class="compare-row">
+          <div class="old">Arguments about hours and overtime nobody wrote down</div>
+          <div class="new">Daywork and price work logged on site, approved from the office</div>
+        </div>
+        <div class="compare-row">
+          <div class="old">Enterprise software priced for a company with an IT department</div>
+          <div class="new">£79 a month, set up by the bloke who built it</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section id="features">
+    <div class="wrap">
+      <div class="eyebrow">What's inside</div>
+      <h2 class="big">Six jobs, one app.</h2>
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="form-no">FORM 01</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 3v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V3"/><path d="M8 11h8M8 15h5"/></svg>
+          <h3>Tasks &amp; photo proof</h3>
+          <p>Assign the job, the lad marks it done and uploads the photo. You see it happen without ringing round.</p>
+        </div>
+        <div class="feat">
+          <div class="form-no">FORM 02</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+          <h3>Timesheets</h3>
+          <p>Daywork and price work, logged on site in seconds, reviewed and approved from the office.</p>
+        </div>
+        <div class="feat">
+          <div class="form-no">FORM 03</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M15 3v4h4M8 12h8M8 16h5"/></svg>
+          <h3>Drawings &amp; documents</h3>
+          <p>Drawings on every phone, labelled by version and downloadable on site. No printing, no digging through an email chain.</p>
+        </div>
+        <div class="feat">
+          <div class="form-no">FORM 04</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/></svg>
+          <h3>Materials requests</h3>
+          <p>Raise it on site, approve it from the office, track it to delivery. No more chasing by text.</p>
+        </div>
+        <div class="feat">
+          <div class="form-no">FORM 05</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+          <h3>Site photos</h3>
+          <p>Progress and evidence, timestamped and tied to the job — ready if a dispute ever needs settling.</p>
+        </div>
+        <div class="feat">
+          <div class="form-no">FORM 06</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H8l-4 4V5Z"/><path d="M8 9h8M8 12.5h5"/></svg>
+          <h3>Messages per site</h3>
+          <p>One thread per job, not five WhatsApp groups you mute within a week. Manager and worker logins, so everyone sees what they need.</p>
+        </div>
+      </div>
+      <p style="margin-top:20px; font-family:'IBM Plex Mono'; font-size:13px; color:var(--muted);">↳ Every table — timesheets, tasks, materials, drawings — exports straight to CSV for payroll, the accountant, or head office.</p>
+    </div>
+  </section>
+
+  <!-- ================= LIVE DEMO ================= -->
+  <section id="demo" class="demo-band">
+    <div class="wrap">
+      <div class="eyebrow">No sales call needed</div>
+      <h2 class="big" style="margin-bottom:10px;">See it live, right now.</h2>
+      <p style="color:var(--ink-soft); font-size:16px; max-width:58ch;">The actual app, running on realistic sample data — three live jobs, a six-man crew, real timesheets, materials requests and a build programme for every site. Log in as a manager or a worker and have a proper look around.</p>
+      <p style="color:var(--ink-soft); font-size:16px; max-width:58ch; margin-top:10px;">Four fields and your logins are on the next page. No card, no waiting for me to approve anything.</p>
+
+      <div class="lead" id="lead" style="margin-top:28px; max-width:720px;">
+        <form name="demo-access" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+          <input type="hidden" name="form-name" value="demo-access">
+          <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
+          <div class="lead-grid">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" name="walkthrough" value="yes"> Ring me as well and walk me through it on my own sites</label>
+          <button class="btn btn-primary btn-block" type="submit">Unlock the live demo →</button>
+          <p class="small-print" style="margin-top:14px;">Four fields, no newsletter, no passing your details on — they come to me and nobody else. <a href="/privacy/">How we use your details</a>. Rather just talk? <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="eyebrow">Pricing</div>
+      <h2 class="big">No contracts, no nonsense.</h2>
+      <div class="price-grid">
+        <div class="quote">
+          <div class="quote-head">
+            <div class="mono">Starter</div>
+            <div class="price">£79<span>/month</span></div>
+            <div class="tier">Up to 10 users</div>
+          </div>
+          <ul>
+            <li>Tasks &amp; photo proof</li>
+            <li>Timesheets — daywork &amp; price work</li>
+            <li>Materials requests</li>
+            <li>Drawings &amp; documents</li>
+            <li>Site photos</li>
+            <li>Messages per site</li>
+            <li>Build programme per site</li>
+          </ul>
+          <!-- STRIPE: replace with your Payment Link for the £79 monthly plan -->
+          <div class="foot"><a class="btn btn-ghost btn-block" href="https://buy.stripe.com/aFadR28IYdmH1Fea5N5sA07">Start Starter — £79/mo</a></div>
+        </div>
+        <div class="quote featured">
+          <div class="quote-head">
+            <div class="mono">Growth</div>
+            <div class="price">£149<span>/month</span></div>
+            <div class="tier">Up to 25 users</div>
+          </div>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>For larger teams across more sites</li>
+            <li>Priority support — straight to me</li>
+          </ul>
+          <!-- STRIPE: replace with your Payment Link for the £149 monthly plan -->
+          <div class="foot"><a class="btn btn-primary btn-block" href="https://buy.stripe.com/aFa28k8IYgyT5Vu6TB5sA05">Start Growth — £149/mo</a></div>
+        </div>
+      </div>
+      <p class="price-note">Not sure which? <a href="tel:+447508300353">Ring me on 07508 300353</a> and I'll tell you straight — it's usually Starter.</p>
+      <p class="small-print">Prices exclude VAT. Cancel any time. Want a proper look before you pay? The live demo above takes four fields and no card.</p>
+    </div>
+  </section>
+
+  <!-- ================= WHITE LABEL ================= -->
+  <section class="whitelabel">
+    <div class="wrap wl-grid">
+      <div>
+        <div class="eyebrow">For agencies &amp; larger firms</div>
+        <h2 class="big" style="margin-bottom:16px;">Your app. Your branding.</h2>
+        <p style="color:var(--ink-soft); font-size:17px; max-width:50ch;">Want your own version to put in front of clients and your workforce? Banksman can be rebuilt in your company's logo and colours, on your own domain — the same app, wearing your name.</p>
+        <p style="color:var(--ink-soft); font-size:15px; max-width:50ch;">Want it bundled with an AI chatbot and automation for your enquiries? That's the full DM.AI 4U package, from around £350/month.</p>
+      </div>
+      <div class="wl-card">
+        <div class="mono" style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);">White-label setup</div>
+        <div class="price">£500–£1,000 <span>one-off</span></div>
+        <p style="font-size:14.5px; color:var(--ink); margin:12px 0 18px;">Secure your build slot with a £500 deposit, then we scope the branding together. Monthly plan on top, same prices as above.</p>
+        <!-- STRIPE: replace with your Payment Link for the one-off white-label deposit -->
+        <a class="btn btn-primary btn-block" href="https://buy.stripe.com/14AdR20cs4QbbfO6TB5sA06">Pay £500 deposit</a>
+        <p style="font-size:13px; color:var(--ink-soft); margin:12px 0 0; text-align:center;">Rather talk first? <a href="tel:+447508300353" style="color:var(--accent);">07508 300353</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-card">
+        <div class="mono">Built by</div>
+        <div class="biz">Dom Keady</div>
+        <div class="loc">Slaithwaite, Huddersfield · West Yorkshire</div>
+        <div class="work">New builds · extensions · renovations · retaining walls · hard landscaping</div>
+      </div>
+      <div>
+        <h2>Built by a builder, not a startup.</h2>
+        <p class="lede">I'm Dom — a bricklayer running my own building firm in West Yorkshire. Banksman exists because I got sick of running my own sites on WhatsApp and a biro. No fake client logos, no made-up reviews here — just a live demo you can log into right now and judge for yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL ================= -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Get your team off WhatsApp.</h2>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#demo">Try the live demo →</a>
+        <a class="btn btn-ghost" href="tel:+447508300353">Give me a ring</a>
+      </div>
+      <div class="contact-panel">
+        <a href="tel:+447508300353">07508 300353</a>
+        <a href="mailto:dom@dm4u.ai">dom@dm4u.ai</a>
+        <p>Ring or email me direct — you'll get me, not a call centre</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

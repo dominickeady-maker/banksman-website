@@ -1,0 +1,55 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { SITE } from '../site';
+import { type Post, formatDate, readingMinutes, shareImageUrl, postUrl } from '../lib/posts';
+import { blogPostingSchema, breadcrumbSchema, faqSchema } from '../lib/schema';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { title, description, author, category, pubDate, updatedDate, faq, draft, imageAlt } = post.data;
+const schema = [
+  blogPostingSchema(post),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog/' },
+    { name: title, path: postUrl(post) },
+  ]),
+  ...(faq.length ? [faqSchema(faq)] : []),
+];
+---
+<BaseLayout
+  title={`${title} | ${SITE.name}`}
+  description={description}
+  image={shareImageUrl(post)}
+  imageAlt={imageAlt ?? title}
+  type="article"
+  noindex={draft}
+  schema={schema}
+  current="blog"
+>
+  <section class="page-head"><div class="wrap">
+    <div class="crumbs"><a href="/blog/">Blog</a> / {category}</div>
+    {draft && <div class="draft-flag">Draft · not on the live site</div>}
+    <h1>{title}</h1>
+    <div class="meta">
+      {author} · <time datetime={pubDate.toISOString().slice(0, 10)}>{formatDate(pubDate)}</time>{updatedDate && <> · Updated <time datetime={updatedDate.toISOString().slice(0, 10)}>{formatDate(updatedDate)}</time></>}{` · ${readingMinutes(post.body)} min read`}
+    </div>
+  </div></section>
+  <div class="wrap"><article class="prose">
+    <slot />
+    {faq.length > 0 && (
+      <section class="post-faq" aria-labelledby="faq">
+        <h2 id="faq">FAQ</h2>
+        {faq.map(({ question, answer }) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </section>
+    )}
+  </article></div>
+</BaseLayout>

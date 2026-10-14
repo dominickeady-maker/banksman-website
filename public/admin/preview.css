@@ -1,0 +1,8 @@
+/* Approximates the live post styles inside the Decap preview pane. */
+@import url('/assets/fonts.css');
+body { background: #0d1120; color: #c3c9de; font: 17px/1.55 'IBM Plex Sans', system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px; }
+h1, h2 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; color: #f5f3ec; line-height: 1.05; }
+h3, strong { color: #f5f3ec; }
+a { color: #ff7a2e; }
+img { max-width: 100%; height: auto; }
+.post-cta { border: 1px solid #ff7a2e; background: #3d2410; border-radius: 4px; padding: 24px; margin-top: 40px; }

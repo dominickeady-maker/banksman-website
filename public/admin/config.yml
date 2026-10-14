@@ -1,0 +1,59 @@
+# Decap CMS — https://decapcms.org/docs/configuration-options/
+# Login uses GitHub via Netlify's OAuth provider (see BLOG_GUIDE.md, "Admin login").
+backend:
+  name: github
+  repo: dominickeady-maker/banksman-website
+  branch: main
+  commit_messages:
+    create: 'Blog: create “{{slug}}”'
+    update: 'Blog: update “{{slug}}”'
+    delete: 'Blog: delete “{{slug}}”'
+    uploadMedia: 'Blog: upload “{{path}}”'
+    deleteMedia: 'Blog: delete “{{path}}”'
+
+# Each post is saved as a pull request until it is published from the Workflow tab.
+publish_mode: editorial_workflow
+
+site_url: https://banksman.app
+display_url: https://banksman.app
+logo_url: /assets/banksman-icon.svg
+
+media_folder: public/images/blog
+public_folder: /images/blog
+
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    preview_path: 'blog/{{slug}}/'
+    summary: '{{title}} — {{author}}'
+    sortable_fields: ['pubDate', 'title', 'author']
+    view_filters:
+      - { label: Drafts, field: draft, pattern: true }
+      - { label: Published, field: draft, pattern: false }
+    fields:
+      - { name: title, label: Title, widget: string, hint: 'Shown as the page H1. 10–90 characters. Do not repeat it in the body.' }
+      - { name: description, label: Meta description, widget: text, hint: '50–170 characters. Shown in Google and when the link is shared.' }
+      - { name: keyword, label: Target keyword, widget: string, hint: 'The search phrase this post is written for. Use it in the title or first paragraph.' }
+      - { name: author, label: Author, widget: string, default: Matt }
+      - { name: category, label: Category, widget: string, default: Site management, hint: 'Shown above the title and on the blog card.' }
+      - { name: pubDate, label: Publish date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true }
+      - { name: updatedDate, label: Updated date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, required: false }
+      - { name: draft, label: Draft (hidden from the live site), widget: boolean, default: true }
+      - { name: image, label: Share image (optional), widget: image, required: false, hint: '1200×630. Leave empty to use the generated share image.' }
+      - { name: imageAlt, label: Share image alt text, widget: string, required: false }
+      - name: faq
+        label: FAQ
+        widget: list
+        required: false
+        summary: '{{fields.question}}'
+        hint: 'Shown at the end of the post and sent to Google as FAQ structured data.'
+        fields:
+          - { name: question, label: Question, widget: string }
+          - { name: answer, label: Answer, widget: text }
+      - { name: body, label: Body, widget: markdown, hint: 'Start with a direct answer paragraph, then ## sections. No # heading.' }

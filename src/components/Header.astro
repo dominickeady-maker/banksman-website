@@ -1,0 +1,35 @@
+---
+import { SITE } from '../site';
+
+interface Props {
+  current?: 'blog';
+}
+
+const { current } = Astro.props;
+const blogCurrent = current === 'blog' ? { 'aria-current': 'page' as const } : {};
+---
+<header class="site">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="/"><img src="/assets/banksman-logo.png" alt="Banksman.app" width="216" height="35"></a>
+    <div class="navlinks">
+      <a href="/#features">Features</a>
+      <a href={SITE.demoUrl}>Live demo</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" {...blogCurrent}>Blog</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-call" href={`tel:${SITE.phoneIntl}`}>Call<span class="num"> {SITE.phone}</span></a>
+      <a class="btn btn-primary btn-sm nav-demo" href={SITE.demoUrl}>Try the demo</a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#features">Features</a>
+    <a href={SITE.demoUrl}>Live demo</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/blog/" {...blogCurrent}>Blog</a>
+    <a href={SITE.appUrl}>Log in</a>
+    <a href={`tel:${SITE.phoneIntl}`}>Call {SITE.phone}</a>
+    <div class="mm-cta"><a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a></div>
+  </div>
+</header>

@@ -1,0 +1,29 @@
+---
+import { SITE } from '../site';
+---
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="fg-brand">
+        <img src="/assets/banksman-logo.png" alt="Banksman.app" width="173" height="28">
+        <p>Site management software built by a working builder, for UK construction. Directing every job, every day.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="/#features">Features</a>
+        <a href={SITE.demoUrl}>Live demo</a>
+        <a href="/#pricing">Pricing</a>
+        <a href={SITE.appUrl}>Log in</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="/blog/">Blog</a>
+        <a href="/privacy/">Privacy &amp; cookies</a>
+        <button class="linklike" type="button" onclick="openCookieSettings()">Cookie settings</button>
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        <a href={`tel:${SITE.phoneIntl}`}>{SITE.phone}</a>
+      </div>
+    </div>
+    <div class="legal-line">Banksman is a product of {SITE.company}. © {new Date().getFullYear()}.</div>
+  </div>
+</footer>
