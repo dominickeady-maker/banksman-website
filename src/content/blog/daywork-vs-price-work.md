@@ -4,8 +4,8 @@ description: "The difference between daywork and price work, and how to record e
 keyword: "daywork vs price work construction"
 author: Matt
 category: Site management
-pubDate: 2026-10-13
-draft: true
+pubDate: 2026-10-14
+draft: false
 faq:
   - question: "Can a job be both daywork and price work?"
     answer: "Yes — it's common for the main job to be priced and any variations or extras to be logged as daywork on top. The key is keeping them clearly separated in the record."
