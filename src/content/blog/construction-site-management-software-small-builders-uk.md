@@ -4,8 +4,8 @@ description: "Most construction management software is built for firms with an I
 keyword: "construction site management software small builders UK"
 author: Matt
 category: Choosing software
-pubDate: 2026-10-13
-draft: true
+pubDate: 2026-10-14
+draft: false
 faq:
   - question: "Is cheaper software worse software?"
     answer: "Not necessarily. A lot of the cost in enterprise construction software goes toward capability that smaller firms never use — multi-trade bid management, complex approval chains, integrations with systems you don't have. Simpler, cheaper tools can cover the day-to-day better precisely because they're not trying to do everything."
