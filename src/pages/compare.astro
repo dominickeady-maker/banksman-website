@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ComingSoon from '../components/ComingSoon.astro';
+import { SITE } from '../site';
+import type { FeatureId } from '../data/features';
+import { breadcrumbSchema } from '../lib/schema';
+import '../styles/pages.css';
+
+// Banksman against the way most small firms run now. Don't name other software products on this page.
+const rows: { job: string; sheet: string; chat: string; us: string; feature: FeatureId }[] = [
+  {
+    job: 'Who’s doing what',
+    sheet: 'A job list on the office computer. Out of date by dinner.',
+    chat: 'Messages scrolling past. Nobody’s sure what was agreed.',
+    us: 'Tasks set for each site, ticked off on the phone with a photo.',
+    feature: 'tasks',
+  },
+  {
+    job: 'Photos as proof',
+    sheet: 'Kept somewhere else, if they’re kept at all.',
+    chat: 'Mixed in with everything else, and stuck on whoever’s phone took them.',
+    us: 'A photo library stamped with the upload time from our server, the site, the task and who took it.',
+    feature: 'photos',
+  },
+  {
+    job: 'Drawings',
+    sheet: 'Email attachments and a printed copy in the van.',
+    chat: 'Sent as a picture. Easy to work off an old one.',
+    us: 'On every phone, sorted by site and labelled by version.',
+    feature: 'drawings',
+  },
+  {
+    job: 'Hours and price work',
+    sheet: 'Typed up at the end of the week from texts and bits of paper.',
+    chat: '“Did 9 hrs today” messages to add up on a Friday.',
+    us: 'Logged per site or plot. Approved, or queried with a reason. Grouped by week ending, with a CSV export.',
+    feature: 'timesheets',
+  },
+  {
+    job: 'Materials',
+    sheet: 'An order list someone has to remember to update.',
+    chat: '“Can you order…” and hope someone did.',
+    us: 'Requested, approved, ordered, dispatched, delivered. Supplier, order ref and a delivery photo.',
+    feature: 'materials',
+  },
+  {
+    job: 'Site chat',
+    sheet: 'None.',
+    chat: 'Quick and easy, but job talk sits next to family chats.',
+    us: 'A group chat for every site, plus direct messages, kept with the job.',
+    feature: 'messages',
+  },
+  {
+    job: 'On the phone',
+    sheet: 'Fiddly on a small screen with cold hands.',
+    chat: 'Already on everyone’s phone.',
+    us: 'Installs on the phone like an app, with push notifications and a guided tour.',
+    feature: 'pwa',
+  },
+  {
+    job: 'Your name on it',
+    sheet: 'Your logo in the header, if someone sets it up.',
+    chat: 'Not yours.',
+    us: 'Your company’s logo and colours.',
+    feature: 'whitelabel',
+  },
+  {
+    job: 'Who’s on site',
+    sheet: 'A paper signing-in book in the cabin.',
+    chat: '“Who’s in today?”',
+    us: 'Sign in and out with a QR poster, and a fire roll call.',
+    feature: 'signIn',
+  },
+  {
+    job: 'No signal',
+    sheet: 'Not much use on site anyway.',
+    chat: 'Messages send when you’re back in range.',
+    us: 'Offline mode: saves without signal, syncs later.',
+    feature: 'offline',
+  },
+];
+
+const description = 'How Banksman compares with running your sites on spreadsheets and WhatsApp groups: tasks, photos, drawings, hours and materials, side by side.';
+const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Compare', path: '/compare/' }])];
+---
+<BaseLayout title="Banksman vs spreadsheets & WhatsApp | Banksman" description={description} image="/og/compare.png" imageAlt="Banksman vs spreadsheets and WhatsApp" schema={schema}>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Compare</div>
+    <h1>Banksman vs spreadsheets &amp; WhatsApp</h1>
+    <p>Most small firms run their sites on a spreadsheet in the office and a handful of group chats. It's free and everyone knows how to use it. Here's where it starts to cost you.</p>
+  </div></section>
+
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="compare-scroll">
+        <table class="compare-table">
+          <caption class="hp">Banksman compared with spreadsheets and WhatsApp groups</caption>
+          <thead>
+            <tr><th scope="col">The job</th><th scope="col">Spreadsheets</th><th scope="col">WhatsApp groups</th><th scope="col" class="us">Banksman</th></tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr>
+                <th scope="row">{row.job}</th>
+                <td data-label="Spreadsheets">{row.sheet}</td>
+                <td data-label="WhatsApp groups">{row.chat}</td>
+                <td data-label="Banksman" class="us">{row.us} <ComingSoon feature={row.feature} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="small-print" style="text-align:left">Anything marked "Coming soon" isn't in the app yet.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap prose" style="padding-bottom:0">
+      <h2>When a group chat is enough</h2>
+      <p>If it's you and one lad on one job, a group chat probably does the job. It starts to fall apart with more sites, more people and more money riding on who said what. That's when you want the tasks, hours, orders and photos kept against the site, not against someone's phone.</p>
+      <p>Banksman helps you keep records, so when there's a question about the work, the answer's already written down.</p>
+      <p>Want to see it for your trade? Have a look at the pages for <a href="/for-builders/">builders</a>, <a href="/for-subcontractors/">subcontractors</a> and <a href="/for-groundworkers/">groundworkers</a>, or <a href={SITE.demoUrl}>try the live demo</a>.</p>
+    </div>
+  </section>
+
+  <CtaBand heading="Get your team off WhatsApp." />
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import '../../styles/pages.css';
+
+const tools = [
+  {
+    href: '/tools/cis-calculator/',
+    tag: 'CIS',
+    name: 'CIS deduction calculator',
+    text: 'Labour and materials in, deduction and payment out. Covers 20%, 30% and gross payment status, with the rule on materials and VAT.',
+  },
+  {
+    href: '/tools/day-rate-calculator/',
+    tag: 'Rates',
+    name: 'Day rate calculator',
+    text: 'Turn a day rate into hourly, weekly and yearly pay, or work back from any of them. Set your own hours, days and weeks.',
+  },
+];
+const description = 'Free calculators for UK builders and trades: a CIS deduction calculator and a day rate calculator. No sign-up, works on your phone.';
+const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Free tools', path: '/tools/' }])];
+---
+<BaseLayout title="Free calculators for builders and trades | Banksman" description={description} image="/og/tools.png" imageAlt="Free tools for builders" schema={schema}>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Free tools</div>
+    <h1>Quick sums for the van.</h1>
+    <p>Free calculators for builders and trades. No sign-up, and they work on your phone.</p>
+  </div></section>
+
+  <div class="wrap">
+    <div class="tool-grid">
+      {tools.map((tool) => (
+        <a class="post-card" href={tool.href}>
+          <div class="tag">{tool.tag}</div>
+          <h2>{tool.name}</h2>
+          <p>{tool.text}</p>
+          <div class="meta">Open the calculator →</div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <CtaBand heading="Done the sums? Sort the sites." text="Banksman keeps tasks, hours, orders, drawings and photos for every site in one app. Try the live demo on realistic sample data. Four fields, no card." />
+</BaseLayout>

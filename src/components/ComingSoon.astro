@@ -1,0 +1,12 @@
+---
+import { FEATURES, type FeatureId } from '../data/features';
+
+// Shows a "Coming soon" badge. Pass `feature` to show it only while that feature isn't live yet.
+interface Props {
+  feature?: FeatureId;
+}
+
+const { feature } = Astro.props;
+const show = !feature || FEATURES[feature].status === 'coming-soon';
+---
+{show && <span class="badge-soon">Coming soon</span>}

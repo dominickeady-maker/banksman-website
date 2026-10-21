@@ -8,8 +8,9 @@ const blogDir = join(root, 'src/content/blog');
 const errors = [];
 const warnings = [];
 
-// Slugs used by other routes under /og/.
-const RESERVED = new Set(['default', 'blog']);
+// Slugs used by other routes under /og/ (site pages, tools, compare, and the for-<trade> landing pages).
+const RESERVED = new Set(['default', 'blog', 'tools', 'tools-cis-calculator', 'tools-day-rate-calculator', 'compare']);
+const isReserved = (slug) => RESERVED.has(slug) || slug.startsWith('for-');
 
 // Banksman labels drawings by version; it has no revision history or superseding, so pages
 // and posts must not claim it does. The keyword field may still target the search phrase.
@@ -31,7 +32,7 @@ for (const file of posts) {
   const field = (name) => fm.match(new RegExp(`^${name}:\\s*(.*)$`, 'm'))?.[1]?.replace(/^"(.*)"$/, '$1').trim();
 
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) errors.push(`${rel}: file name must be a lowercase-hyphen slug`);
-  if (RESERVED.has(slug)) errors.push(`${rel}: "${slug}" is reserved`);
+  if (isReserved(slug)) errors.push(`${rel}: "${slug}" is reserved`);
   for (const name of ['title', 'description', 'keyword', 'author', 'pubDate']) {
     if (!field(name)) errors.push(`${rel}: front matter "${name}" is missing`);
   }

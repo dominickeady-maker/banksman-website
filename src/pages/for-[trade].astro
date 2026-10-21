@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureList from '../components/FeatureList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE } from '../site';
+import { TRADES, type Trade } from '../data/trades';
+import { FEATURES, type FeatureId } from '../data/features';
+import { breadcrumbSchema } from '../lib/schema';
+import '../styles/pages.css';
+
+// One page per trade: /for-builders/, /for-bricklayers/ and so on. The copy lives in src/data/trades.ts.
+export function getStaticPaths() {
+  return TRADES.map((trade) => ({ params: { trade: trade.slug }, props: { trade } }));
+}
+
+const { trade } = Astro.props as { trade: Trade };
+const path = `/for-${trade.slug}/`;
+
+// Features the fixes use, then the extras. A feature on the "on the way" list joins the main list once it's live.
+const fixIds = trade.pains.flatMap((p) => p.features);
+const soon = trade.onTheWay.filter((id) => FEATURES[id].status === 'coming-soon');
+const nowLive = trade.onTheWay.filter((id) => FEATURES[id].status === 'live');
+const liveIds = [...new Set<FeatureId>([...fixIds, ...trade.alsoUseful, ...nowLive])];
+
+const schema = [breadcrumbSchema([{ name: 'Home', path: '/' }, { name: `For ${trade.name.toLowerCase()}`, path }])];
+---
+<BaseLayout title={trade.title} description={trade.description} image={`/og/for-${trade.slug}.png`} imageAlt={trade.ogTitle} schema={schema}>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">{trade.eyebrow}</div>
+    <h1>{trade.h1}</h1>
+    <p>{trade.lede}</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a>
+      <a class="btn btn-ghost" href="/compare/">How it compares</a>
+    </div>
+  </div></section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Sound familiar?</div>
+      <h2 class="big">{trade.painsHeading}</h2>
+      <ol class="pain-list">
+        {trade.pains.map((pain) => (
+          <li class="pain">
+            <div class="old">
+              <div class="label">The problem</div>
+              <h3>{pain.problem}</h3>
+              <p>{pain.detail}</p>
+            </div>
+            <div class="new">
+              <div class="label">With Banksman</div>
+              <p>{pain.fix}</p>
+              <ul class="chips" aria-label="Features used">
+                {pain.features.map((id) => <li>{FEATURES[id].name}</li>)}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">In the app today</div>
+      <h2 class="big">What you get.</h2>
+      <FeatureList ids={liveIds} />
+      {trade.tool && <p class="tool-link"><a href={trade.tool.href}>{trade.tool.text}</a></p>}
+    </div>
+  </section>
+
+  {soon.length > 0 && (
+    <section>
+      <div class="wrap">
+        <div class="eyebrow">On the way</div>
+        <h2 class="big">Being built now.</h2>
+        <p class="section-note">These aren't in the app yet. They're marked "Coming soon" until they are.</p>
+        <FeatureList ids={soon} />
+      </div>
+    </section>
+  )}
+
+  <CtaBand heading={trade.ctaHeading} />
+</BaseLayout>

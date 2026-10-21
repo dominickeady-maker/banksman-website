@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import ComingSoon from '../../components/ComingSoon.astro';
+import { FEATURES } from '../../data/features';
+import { breadcrumbSchema } from '../../lib/schema';
+import '../../styles/pages.css';
+
+// Rates and the materials/VAT rule checked against GOV.UK (October 2026):
+// https://www.gov.uk/what-you-must-do-as-a-cis-contractor/make-deductions-and-pay-subcontractors
+const GOV_DEDUCTIONS = 'https://www.gov.uk/what-you-must-do-as-a-cis-contractor/make-deductions-and-pay-subcontractors';
+const GOV_SUB = 'https://www.gov.uk/what-you-must-do-as-a-cis-subcontractor';
+
+const title = 'CIS calculator: work out the 20% or 30% deduction | Banksman';
+const description = 'Free CIS calculator for UK construction. Enter the labour and materials, pick 20%, 30% or gross payment status, and see the deduction and what gets paid.';
+const schema = [
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Free tools', path: '/tools/' }, { name: 'CIS calculator', path: '/tools/cis-calculator/' }]),
+];
+---
+<BaseLayout title={title} description={description} image="/og/tools-cis-calculator.png" imageAlt="CIS deduction calculator" schema={schema}>
+  <section class="page-head"><div class="wrap">
+    <div class="crumbs"><a href="/tools/">Free tools</a> / CIS</div>
+    <div class="eyebrow">Free tool</div>
+    <h1>CIS deduction calculator</h1>
+    <p>Put in the labour, and the materials if there are any. Pick the subcontractor's CIS status. You'll see what comes off and what gets paid.</p>
+  </div></section>
+
+  <div class="wrap">
+    <div class="calc" id="cis">
+      <form class="calc-card" id="cis-form" novalidate onsubmit="return false">
+        <h2>The payment</h2>
+        <div class="field">
+          <label for="cis-labour">Labour (gross, before CIS)</label>
+          <div class="money"><input id="cis-labour" type="text" inputmode="decimal" autocomplete="off" value="1000" aria-describedby="cis-labour-hint"></div>
+          <p class="hint" id="cis-labour-hint">The labour part of the invoice, without VAT.</p>
+        </div>
+        <div class="field">
+          <label for="cis-materials">Materials (optional)</label>
+          <div class="money"><input id="cis-materials" type="text" inputmode="decimal" autocomplete="off" value="200" placeholder="0" aria-describedby="cis-materials-hint"></div>
+          <p class="hint" id="cis-materials-hint">Materials the subcontractor bought for the job, without VAT.</p>
+        </div>
+        <fieldset>
+          <legend>Subcontractor's CIS status</legend>
+          <div class="choice">
+            <label><input type="radio" name="rate" value="20" checked> <b>20%</b> Registered for CIS</label>
+            <label><input type="radio" name="rate" value="30"> <b>30%</b> Not registered</label>
+            <label><input type="radio" name="rate" value="0"> <b>0%</b> Gross payment status</label>
+          </div>
+        </fieldset>
+        <p class="hint" id="cis-error" role="alert" hidden></p>
+      </form>
+
+      <div class="calc-card" aria-live="polite">
+        <h2>What gets paid</h2>
+        <dl class="results">
+          <div><dt>Labour</dt><dd id="out-labour">£1,000.00</dd></div>
+          <div><dt>CIS deduction (<span id="out-rate">20%</span> of labour)</dt><dd id="out-deduction">−£200.00</dd></div>
+          <div><dt>Labour after deduction</dt><dd id="out-net-labour">£800.00</dd></div>
+          <div><dt>Materials (no deduction)</dt><dd id="out-materials">£200.00</dd></div>
+          <div class="total"><dt>Paid to the subcontractor</dt><dd id="out-total">£1,000.00</dd></div>
+        </dl>
+        <p class="calc-note">The contractor pays the deduction to HMRC on the subcontractor's behalf. Any VAT is on top, and isn't part of the deduction.</p>
+        <noscript><p class="calc-note">The calculator needs JavaScript. The figures above are the example: £1,000 labour and £200 materials at 20%.</p></noscript>
+      </div>
+    </div>
+
+    <div class="prose" style="padding-bottom:20px">
+      <h2>How the deduction works</h2>
+      <ul>
+        <li><strong>20%</strong> if the subcontractor is registered for CIS.</li>
+        <li><strong>30%</strong> if they're not registered, or the contractor can't verify them.</li>
+        <li><strong>0%</strong> if they have gross payment status.</li>
+      </ul>
+      <p>The deduction comes off the labour only. <strong>Materials aren't subject to the CIS deduction, and neither is VAT.</strong> HMRC also leaves out things like plant hire and consumables. Materials only come out of the sum if the subcontractor paid for them, and the contractor can ask for receipts.</p>
+      <p>Source: GOV.UK, <a href={GOV_DEDUCTIONS} rel="noopener">What you must do as a CIS contractor: make deductions and pay subcontractors</a>. For the subcontractor's side, see <a href={GOV_SUB} rel="noopener">What you must do as a CIS subcontractor</a>.</p>
+      <p class="calc-guide">This calculator is a guide. It doesn't file anything with HMRC.</p>
+      <p>If you're not sure which rate applies, or what counts as materials on a job, check with HMRC or your accountant.</p>
+
+      <h2>Keeping the records behind it</h2>
+      <p>Banksman doesn't do your CIS returns. It helps you keep records of the work behind them: daywork hours and price work logged per site or plot, approved by the manager, grouped by week ending and exported as a CSV for whoever does your books.</p>
+      <p><strong>{FEATURES.cisInvoices.name}</strong> <ComingSoon feature="cisInvoices" />: {FEATURES.cisInvoices.summary}</p>
+      <p>Working out what to charge? Try the <a href="/tools/day-rate-calculator/">day rate calculator</a>.</p>
+    </div>
+  </div>
+
+  <CtaBand heading="Get the hours right first." text="Banksman keeps your timesheets, approvals and site records in one app. Have a look round the live demo on realistic sample data. Four fields, no card." />
+
+  <script is:inline>
+  (function () {
+    var form = document.getElementById('cis-form');
+    if (!form) return;
+    var gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
+    var labourEl = document.getElementById('cis-labour');
+    var materialsEl = document.getElementById('cis-materials');
+    var errorEl = document.getElementById('cis-error');
+    var out = function (id, text) { document.getElementById(id).textContent = text; };
+
+    // Accepts "1000", "1,000.50" or "£1,000". Returns null if it isn't a number of pounds.
+    function parse(value) {
+      var cleaned = String(value).replace(/[£,\s]/g, '');
+      if (cleaned === '') return 0;
+      if (!/^\d*\.?\d*$/.test(cleaned) || cleaned === '.') return null;
+      return Number(cleaned);
+    }
+
+    function update() {
+      var labour = parse(labourEl.value);
+      var materials = parse(materialsEl.value);
+      var bad = [];
+      if (labour === null) bad.push('labour');
+      if (materials === null) bad.push('materials');
+      labourEl.setAttribute('aria-invalid', labour === null ? 'true' : 'false');
+      materialsEl.setAttribute('aria-invalid', materials === null ? 'true' : 'false');
+      if (bad.length) {
+        errorEl.hidden = false;
+        errorEl.textContent = 'Enter the ' + bad.join(' and ') + ' as an amount in pounds, like 1000 or 1,250.50.';
+        return;
+      }
+      errorEl.hidden = true;
+      var rate = Number(form.querySelector('input[name="rate"]:checked').value);
+      // Work in pence so the figures add up exactly.
+      var labourP = Math.round(labour * 100);
+      var materialsP = Math.round(materials * 100);
+      var deductionP = Math.round(labourP * rate / 100);
+      out('out-labour', gbp.format(labourP / 100));
+      out('out-rate', rate + '%');
+      out('out-deduction', (deductionP ? '−' : '') + gbp.format(deductionP / 100));
+      out('out-net-labour', gbp.format((labourP - deductionP) / 100));
+      out('out-materials', gbp.format(materialsP / 100));
+      out('out-total', gbp.format((labourP - deductionP + materialsP) / 100));
+    }
+
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    update();
+  })();
+  </script>
+</BaseLayout>
