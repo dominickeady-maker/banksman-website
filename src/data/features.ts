@@ -65,18 +65,18 @@ export const FEATURES = {
 
   hsDocs: {
     name: 'Health and safety documents with sign-off',
-    summary: 'RAMS and inductions sent to the phone and signed off by each worker.',
-    status: 'coming-soon',
+    summary: 'Inductions, RAMS and safety procedures on every phone. Each worker reads and signs with their finger, a new revision asks everyone to sign again, and you see who has signed what.',
+    status: 'live',
   },
   signIn: {
     name: 'Site sign-in and sign-out',
-    summary: 'Sign in and out with a QR poster on site, and a fire roll call of who’s on site right now.',
-    status: 'coming-soon',
+    summary: 'Sign in and out with a QR poster on site, with an optional location check at that moment only, and a fire roll call of who’s on site right now.',
+    status: 'live',
   },
   accidents: {
     name: 'Accident and near-miss reports',
-    summary: 'Report an accident or near miss from the phone, with photos, while it’s fresh.',
-    status: 'coming-soon',
+    summary: 'Report an accident or near miss from the phone, with stamped photos, while it’s fresh. Only the person who reported it and the managers can see it.',
+    status: 'live',
   },
   labourCost: {
     name: 'Labour cost per job',
