@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../site';
+import { TRADES } from '../data/trades';
 ---
 <footer>
   <div class="wrap">
@@ -13,7 +14,13 @@ import { SITE } from '../site';
         <a href="/#features">Features</a>
         <a href={SITE.demoUrl}>Live demo</a>
         <a href="/#pricing">Pricing</a>
+        <a href="/compare/">vs spreadsheets &amp; WhatsApp</a>
+        <a href="/tools/">Free tools</a>
         <a href={SITE.appUrl}>Log in</a>
+      </div>
+      <div>
+        <h4>Who it's for</h4>
+        {TRADES.map((trade) => <a href={`/for-${trade.slug}/`}>{trade.name}</a>)}
       </div>
       <div>
         <h4>Company</h4>

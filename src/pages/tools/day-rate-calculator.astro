@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import ComingSoon from '../../components/ComingSoon.astro';
+import { FEATURES } from '../../data/features';
+import { breadcrumbSchema } from '../../lib/schema';
+import '../../styles/pages.css';
+
+const title = 'Day rate calculator: day, hourly, weekly and yearly | Banksman';
+const description = 'Free day rate calculator for builders and trades. Turn a day rate into hourly, weekly and yearly pay, or work backwards from any of them.';
+const schema = [
+  breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Free tools', path: '/tools/' }, { name: 'Day rate calculator', path: '/tools/day-rate-calculator/' }]),
+];
+---
+<BaseLayout title={title} description={description} image="/og/tools-day-rate-calculator.png" imageAlt="Day rate calculator" schema={schema}>
+  <section class="page-head"><div class="wrap">
+    <div class="crumbs"><a href="/tools/">Free tools</a> / Day rate</div>
+    <div class="eyebrow">Free tool</div>
+    <h1>Day rate calculator</h1>
+    <p>Type in any one of the four. The others work themselves out. Change the hours, days or weeks to match how you actually work.</p>
+  </div></section>
+
+  <div class="wrap">
+    <div class="calc" id="rates">
+      <form class="calc-card" id="rate-form" novalidate onsubmit="return false">
+        <h2>The rate</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label for="r-day">Day rate</label>
+            <div class="money"><input id="r-day" data-rate="day" type="text" inputmode="decimal" autocomplete="off" value="200"></div>
+          </div>
+          <div class="field">
+            <label for="r-hour">Hourly</label>
+            <div class="money"><input id="r-hour" data-rate="hour" type="text" inputmode="decimal" autocomplete="off" value="25"></div>
+          </div>
+          <div class="field">
+            <label for="r-week">Weekly</label>
+            <div class="money"><input id="r-week" data-rate="week" type="text" inputmode="decimal" autocomplete="off" value="1,000"></div>
+          </div>
+          <div class="field">
+            <label for="r-year">Yearly</label>
+            <div class="money"><input id="r-year" data-rate="year" type="text" inputmode="decimal" autocomplete="off" value="46,000"></div>
+          </div>
+        </div>
+        <h2 style="margin-top:6px">How you work</h2>
+        <div class="grid-3">
+          <div class="field">
+            <label for="a-hours">Hours a day</label>
+            <input id="a-hours" data-assume="hours" type="text" inputmode="decimal" autocomplete="off" value="8">
+          </div>
+          <div class="field">
+            <label for="a-days">Days a week</label>
+            <input id="a-days" data-assume="days" type="text" inputmode="decimal" autocomplete="off" value="5">
+          </div>
+          <div class="field">
+            <label for="a-weeks">Weeks worked a year</label>
+            <input id="a-weeks" data-assume="weeks" type="text" inputmode="decimal" autocomplete="off" value="46">
+          </div>
+        </div>
+        <p class="hint">46 weeks leaves room for holidays, bank holidays and the odd week rained off. Change it if your year looks different.</p>
+        <p class="hint" id="rate-error" role="alert" hidden></p>
+      </form>
+
+      <div class="calc-card" aria-live="polite">
+        <h2>That works out at</h2>
+        <dl class="results">
+          <div><dt>An hour</dt><dd id="o-hour">£25.00</dd></div>
+          <div><dt>A day</dt><dd id="o-day">£200.00</dd></div>
+          <div><dt>A week</dt><dd id="o-week">£1,000.00</dd></div>
+          <div class="total"><dt>A year</dt><dd id="o-year">£46,000.00</dd></div>
+        </dl>
+        <p class="calc-note" id="o-basis">Based on 8 hours a day, 5 days a week and 46 weeks a year.</p>
+        <p class="calc-note">These are gross figures, before tax, National Insurance or any CIS deduction. To see what comes off under CIS, try the <a href="/tools/cis-calculator/">CIS calculator</a>.</p>
+        <noscript><p class="calc-note">The calculator needs JavaScript. The figures above are the example: £200 a day at 8 hours, 5 days and 46 weeks.</p></noscript>
+      </div>
+    </div>
+
+    <div class="prose" style="padding-bottom:20px">
+      <h2>Rates are only half of it</h2>
+      <p>A day rate only pays if the days get written down. Banksman logs daywork hours or price work against each site, so the manager can approve them, query them with a reason, and export the week as a CSV.</p>
+      <p><strong>{FEATURES.labourCost.name}</strong> <ComingSoon feature="labourCost" />: {FEATURES.labourCost.summary}</p>
+    </div>
+  </div>
+
+  <CtaBand heading="Log the days, get paid for them." text="See how hours and price work are logged and approved in the live demo, on realistic sample data. Four fields, no card." />
+
+  <script is:inline>
+  (function () {
+    var form = document.getElementById('rate-form');
+    if (!form) return;
+    var gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
+    var plain = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 });
+    var rates = {};
+    form.querySelectorAll('[data-rate]').forEach(function (el) { rates[el.dataset.rate] = el; });
+    var assume = {};
+    form.querySelectorAll('[data-assume]').forEach(function (el) { assume[el.dataset.assume] = el; });
+    var errorEl = document.getElementById('rate-error');
+    var LABELS = { day: 'day rate', hour: 'hourly rate', week: 'weekly figure', year: 'yearly figure', hours: 'hours a day', days: 'days a week', weeks: 'weeks a year' };
+    // The rate field the user last typed in. The others are worked out from it.
+    var anchor = 'day';
+
+    function parse(value) {
+      var cleaned = String(value).replace(/[£,\s]/g, '');
+      if (cleaned === '' || cleaned === '.' || !/^\d*\.?\d*$/.test(cleaned)) return null;
+      return Number(cleaned);
+    }
+    // Plain number for an input box: whole pounds stay whole, anything else gets two decimals.
+    function forInput(n) {
+      var r = Math.round(n * 100) / 100;
+      return Number.isInteger(r) ? plain.format(r) : new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(r);
+    }
+
+    function update() {
+      var problems = [];
+      var a = {};
+      Object.keys(assume).forEach(function (k) {
+        var v = parse(assume[k].value);
+        var ok = v !== null && v > 0 && !(k === 'hours' && v > 24) && !(k === 'days' && v > 7) && !(k === 'weeks' && v > 52);
+        assume[k].setAttribute('aria-invalid', ok ? 'false' : 'true');
+        if (!ok) problems.push(LABELS[k]);
+        a[k] = v;
+      });
+      var value = parse(rates[anchor].value);
+      rates[anchor].setAttribute('aria-invalid', value === null ? 'true' : 'false');
+      if (value === null) problems.push(LABELS[anchor]);
+      if (problems.length) {
+        errorEl.hidden = false;
+        errorEl.textContent = 'Check the ' + problems.join(', ') + '. Use a number, like 200 or 8.5. Hours a day go up to 24, days a week up to 7 and weeks a year up to 52.';
+        return;
+      }
+      errorEl.hidden = true;
+      var day;
+      if (anchor === 'day') day = value;
+      else if (anchor === 'hour') day = value * a.hours;
+      else if (anchor === 'week') day = value / a.days;
+      else day = value / (a.days * a.weeks);
+      var figures = { hour: day / a.hours, day: day, week: day * a.days, year: day * a.days * a.weeks };
+      Object.keys(rates).forEach(function (k) {
+        if (k !== anchor) { rates[k].value = forInput(figures[k]); rates[k].setAttribute('aria-invalid', 'false'); }
+        document.getElementById('o-' + k).textContent = gbp.format(figures[k]);
+      });
+      document.getElementById('o-basis').textContent = 'Based on ' + plain.format(a.hours) + ' hours a day, ' + plain.format(a.days) + ' days a week and ' + plain.format(a.weeks) + ' weeks a year.';
+    }
+
+    form.addEventListener('input', function (e) {
+      if (e.target.dataset && e.target.dataset.rate) anchor = e.target.dataset.rate;
+      update();
+    });
+    update();
+  })();
+  </script>
+</BaseLayout>

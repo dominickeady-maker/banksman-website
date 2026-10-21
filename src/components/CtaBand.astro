@@ -1,0 +1,26 @@
+---
+import { SITE } from '../site';
+
+// The closing call to action on landing, tool and compare pages. It sends people to the demo form
+// on the home page (SITE.demoUrl) rather than repeating the form.
+interface Props {
+  heading?: string;
+  text?: string;
+}
+
+const {
+  heading = 'Have a proper look.',
+  text = 'The live demo is the actual app on realistic sample data. Four fields and your logins are on the next page. No card.',
+} = Astro.props;
+---
+<section class="final cta-band">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <p class="cta-text">{text}</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href={SITE.demoUrl}>Try the live demo →</a>
+      <a class="btn btn-ghost" href={`tel:${SITE.phoneIntl}`}>Give me a ring</a>
+    </div>
+    <p class="small-print">Or ring {SITE.phone}. You'll get me, not a call centre.</p>
+  </div>
+</section>

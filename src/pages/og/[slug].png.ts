@@ -1,10 +1,16 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getPosts } from '../../lib/posts';
 import { renderShareImage } from '../../lib/share-image';
+import { TRADES } from '../../data/trades';
 
 const pages = [
   { slug: 'default', title: 'Kill the paperwork. And the WhatsApp.', eyebrow: 'Site management software' },
   { slug: 'blog', title: 'From the site, not the sales team.', eyebrow: 'The Banksman blog' },
+  { slug: 'tools', title: 'Quick sums for the van.', eyebrow: 'Free tools' },
+  { slug: 'tools-cis-calculator', title: 'CIS deduction calculator', eyebrow: 'Free tool' },
+  { slug: 'tools-day-rate-calculator', title: 'Day rate calculator', eyebrow: 'Free tool' },
+  { slug: 'compare', title: 'Banksman vs spreadsheets & WhatsApp', eyebrow: 'Compare' },
+  ...TRADES.map((trade) => ({ slug: `for-${trade.slug}`, title: trade.ogTitle, eyebrow: trade.eyebrow })),
 ];
 
 export const getStaticPaths = (async () => {

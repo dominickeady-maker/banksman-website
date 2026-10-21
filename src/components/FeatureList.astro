@@ -1,0 +1,22 @@
+---
+import ComingSoon from './ComingSoon.astro';
+import { FEATURES, type FeatureId } from '../data/features';
+
+// A grid of features from src/data/features.ts. Anything not live yet carries a "Coming soon" badge.
+interface Props {
+  ids: FeatureId[];
+}
+
+const { ids } = Astro.props;
+---
+<ul class="feature-list">
+  {ids.map((id) => {
+    const f = FEATURES[id];
+    return (
+      <li class:list={['feature-item', { soon: f.status === 'coming-soon' }]}>
+        <h3>{f.name} <ComingSoon feature={id} /></h3>
+        <p>{f.summary}</p>
+      </li>
+    );
+  })}
+</ul>

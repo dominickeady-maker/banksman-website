@@ -351,7 +351,7 @@
 .crumbs a{color:var(--muted); text-decoration:none;} .crumbs a:hover{color:var(--accent);}
 
 /* footer (multi-column) */
-.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:30px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:22px;}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:30px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:22px;}
 .foot-grid h4{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin:0 0 12px;}
 .foot-grid a, .foot-grid button.linklike{display:block; color:var(--muted); text-decoration:none; font-size:14px; margin-bottom:8px;}
 .foot-grid a:hover, .foot-grid button.linklike:hover{color:var(--accent);}
