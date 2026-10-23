@@ -31,7 +31,7 @@ For a 10-person building firm running a handful of sites, Banksman is generally 
 
 **Banksman** covers six core areas — tasks with photo proof, timesheets (daywork and price work), materials requests, drawings, site photos, and messaging per site — aimed squarely at firms who want their site off WhatsApp and paper without taking on more software than they need.
 
-**Fieldwire** is built for more complex field coordination: detailed plan markup, task management across larger crews, and features aimed at firms juggling bigger or more technically demanding projects. If your firm is scaling toward that complexity, Fieldwire's depth is a genuine advantage.
+**Fieldwire** is built for more complex field coordination: detailed plan markup, task management across larger teams, and features aimed at firms juggling bigger or more technically demanding projects. If your firm is scaling toward that complexity, Fieldwire's depth is a genuine advantage.
 
 ## The honest trade-off
 

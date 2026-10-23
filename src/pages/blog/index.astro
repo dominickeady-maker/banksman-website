@@ -5,7 +5,7 @@ import { getPosts, postUrl, formatDate, readingMinutes } from '../../lib/posts';
 import { breadcrumbSchema } from '../../lib/schema';
 
 const posts = await getPosts();
-const description = 'Practical articles for UK builders and contractors on running sites, managing crews, timesheets, materials and site paperwork.';
+const description = 'Practical articles for UK builders and contractors on running sites, managing teams, timesheets, materials and site paperwork.';
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -27,7 +27,7 @@ const schema = [
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">The Banksman blog</div>
     <h1>From the site, not the sales team.</h1>
-    <p>Straight-talking guides on running building sites, crews, timesheets and paperwork — written by a builder who's been there.</p>
+    <p>Straight-talking guides on running building sites, teams, timesheets and paperwork — written by a builder who's been there.</p>
   </div></section>
   <div class="wrap"><div class="post-grid">
     {posts.map((post) => (
