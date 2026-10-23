@@ -1,6 +1,9 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  # Skip deploy previews, branch deploys, and main pushes that don't change the
+  # site (README, guides, check scripts): see scripts/netlify-ignore.sh
+  ignore = "bash scripts/netlify-ignore.sh"
 
 [build.environment]
   NODE_VERSION = "22"
